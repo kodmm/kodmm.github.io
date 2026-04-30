@@ -643,7 +643,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
       <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-ambiguous">Q4. 仕様が曖昧なまま実装しなければならないとき、どうするか？</a></span></li>
       <li class="todo-item pending"><span class="todo-st pending">未</span><span class="todo-body">Q5. 失敗・反省した経験は？</span></li>
       <li class="todo-item pending"><span class="todo-st pending">未</span><span class="todo-body">Q6. 最近キャッチアップしている技術・トレンドは？</span></li>
-      <li class="todo-item pending"><span class="todo-st pending">未</span><span class="todo-body">Q7. CI/CD はどう構築・運用しているか？</span></li>
+      <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-cicd">Q7. CI/CD はどう構築・運用しているか？</a></span></li>
     </ul>
   </div>
 
@@ -667,6 +667,12 @@ toC Web において、施策の意図・ドメインを理解したうえで、
       <p>設計においては、責務やアーキテクチャに沿った形・移行難易度・スコープなどを考慮して、その時点で最善の設計を提案しました。今後の DevOps にも影響する点があったため、その整備も併せて行いました。</p>
       <p>不要な部分や不要に cache から取得している部分はハードコーディングし、ホワイト化・パフォーマンス改善・依存部分の除去も行いました。パフォーマンスについては、処理が重い部分の予測や dev 環境での実測をもとに「ボトルネックを探して対応」の反復を続け、改善しました。具体的には INDEX を貼ったり、Redis の cache に載せるなどの対応を行いました。</p>
       <p>段階的移行の手段としては CDN のパーセンテージルーティングを駆使し、すぐ戻せる準備や影響の少ない箇所から移行することを提案し、実現しました。</p>
+    </div>
+    <div class="card" id="qa-cicd" style="grid-column:1/-1;">
+      <div class="card-title">Q7. CI/CD はどう構築・運用しているか？</div>
+      <p>PR 時に GitHub Actions で lint / format / test を自動実行しています。Terraform 側は PR チェックで plan を実行し、main マージ後に apply を自動化しています。リリースはタグを打つ形をすでに入社当初から採用しており、大きな課題感はなかったため、そのフローに倣っていないリポジトリがあれば積極的に統一する変更を加えてきました。</p>
+      <p>自主的な CD 整備としては、レガシーなリポジトリを入社当初から施策や手隙のタイミングでリプレイスする動きを続けていました。レガシー依存な開発が減少し、依存するページや API も少なくなってきたタイミングで、リリースフローを「branch hook による 1 日 1 回の定時リリース」から「いつでもタグを打てばリリースできる仕組み」に変更しました。</p>
+      <p>この変更によって得られた効果は 3 点あります。①社内リポジトリの CD フロー統一化の向上、②リリース担当チームの廃止（担当者がリリースを失念する人的ミスが発生していたが、PR マージ者が自主的にリリースできるようになり漏れがゼロに）、③後から加わるメンバーの認知負荷の軽減です。</p>
     </div>
     <div class="card" id="qa-ambiguous" style="grid-column:1/-1;">
       <div class="card-title">Q4. 仕様が曖昧なまま実装しなければならないとき、どうするか？</div>
