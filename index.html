@@ -212,7 +212,7 @@
 <!-- 5. プロジェクト -->
 <section id="projects">
   <h2 class="sec-title">5. 関わったプロジェクト / 動き方マップ</h2>
-  <p style="font-size:0.86rem;color:var(--muted);margin-bottom:0.85rem;">PR 本文・タイトル・Confluence 整備物から再構成。大規模モノリス PHP → Go マイクロサービス移行の中核に居続けつつ、決済・検索・SSR・運用・性能改善まで広く張る動き方。</p>
+  <p style="font-size:0.86rem;color:var(--muted);margin-bottom:0.85rem;">PR 本文・タイトル・Confluence 整備物から再構成。大規模モノリス PHP → Go マイクロサービス移行の中核に居続けつつ、決済・検索・SSR・運用・性能改善まで広く張る動き方。<strong>アサインを待たず自らスコープ外の課題を発見・Issue 化・バックログ登録・リリースまでボールを持ち続ける自走スタイル</strong>が通底している。</p>
   <div class="grid grid-2">
     <div class="card">
       <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:0.45rem;"><div style="font-weight:600">主要な店舗一覧（リスト）ページ群の Go 化 ★メイン軸</div><span class="pill accent" style="white-space:nowrap;margin-left:0.4rem">2024-10〜継続</span></div>
@@ -227,10 +227,16 @@
       <ul style="font-size:0.83rem;color:var(--muted);"><li>デザインシステム: 検索フィルタ導線 UI（複数 PR）</li><li>BFF サービス: キャンペーン処理 PR</li><li>インフラ IaC: Webhook Lambda の Terraform 化</li><li>ポストモーテム + インフラ対応（障害 → Playbook）</li></ul>
     </div>
     <div class="card">
+      <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:0.45rem;"><div style="font-weight:600">店舗トップ マッチスコア表示</div><span class="pill accent" style="white-space:nowrap;margin-left:0.4rem">2024-12〜</span></div>
+      <span class="pill warn">仕様策定〜フルスタック実装</span>
+      <p style="margin-top:0.55rem;">ユーザーと店舗の相性スコアを店舗トップページに表示する施策。仕様の詳細詰めから Backend（スコア取得 API / Go）・Frontend（Vue/Nuxt3 SSR での表示ロジック）まで多岐にわたり一貫して担当。SSR 特有の非同期処理やキャッシュ戦略も含めて設計・実装した。</p>
+      <ul style="font-size:0.83rem;color:var(--muted);"><li>Backend: スコア取得エンドポイント実装（Go）</li><li>Frontend: SSR 対応コンポーネント実装（Vue/Nuxt3）</li><li>仕様検討段階から参加し、実装上の制約を早期にフィードバック</li></ul>
+    </div>
+    <div class="card">
       <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:0.45rem;"><div style="font-weight:600">Frontend SSR / Nuxt3 ハマりどころ解消</div><span class="pill accent" style="white-space:nowrap;margin-left:0.4rem">2024-12〜継続</span></div>
       <span class="pill warn">技術レスキュー</span>
       <p style="margin-top:0.55rem;">Nuxt3 SSR で nuxtApp.runWithContext() が Promise をスローするバグなど、フレームワーク固有の罠を継続的に潰す。src/lib のドメイン/機能単位サブディレクトリ整理リファクタも主導。</p>
-      <ul style="font-size:0.83rem;color:var(--muted);"><li>フロントエンド: 直近 350 件中 69 PR</li><li>src/lib ドメイン・機能単位サブディレクトリ整理</li><li>店舗トップ マッチスコア表示</li></ul>
+      <ul style="font-size:0.83rem;color:var(--muted);"><li>フロントエンド: 直近 350 件中 69 PR</li><li>src/lib ドメイン・機能単位サブディレクトリ整理</li></ul>
     </div>
     <div class="card">
       <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:0.45rem;"><div style="font-weight:600">規約整備・オンボーディング・リリースフロー</div><span class="pill accent" style="white-space:nowrap;margin-left:0.4rem">2025-10〜継続</span></div>
@@ -243,6 +249,17 @@
       <span class="pill warn">性能改善担当</span>
       <p style="margin-top:0.55rem;">MySQL EXPLAIN ベースで IN サブクエリを JOIN に書き換え。INDEX 有無の前後比較で意思決定（≥100ms を基準）。コースページの N+1 解消も担当。</p>
       <ul style="font-size:0.83rem;color:var(--muted);"><li>keyword_city IN→JOIN 書き換え</li><li>INDEX 判断・≥100ms 基準 + 計測結果の画像添付</li><li>BFF 側コースページ perf 改善</li></ul>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:0.45rem;"><div style="font-weight:600">自走：管理画面リプレイス・課題発掘・バックログ登録</div><span class="pill accent" style="white-space:nowrap;margin-left:0.4rem">継続</span></div>
+      <span class="pill success">自走 / 課題発掘 / ボール保持</span>
+      <p style="margin-top:0.55rem;">施策の合間の手隙を活用し、管理画面のリプレイスや施策で漏れた部分の改善に自発的に着手。施策の完了後に「その先にある課題」まで視野を広げ、自ら Issue を作成してバックログに登録。アサインを待たずリリースまでボールを持ち続けるスタイルを一貫している。</p>
+      <ul style="font-size:0.83rem;color:var(--muted);">
+        <li>管理画面の古い UI / ロジックを現行スタックに段階リプレイス</li>
+        <li>施策スコープ外で気づいた不整合・UX 劣化を即 Issue 化 → バックログ登録 → リリースまで完遂</li>
+        <li>「割れ窓リスト」を継続確認し、軽微でも放置しない姿勢をチームに示す</li>
+        <li>発見・提案・実装・リリースを 1 人で回す「フルサイクル自走」型</li>
+      </ul>
     </div>
   </div>
 </section>
