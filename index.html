@@ -85,6 +85,15 @@
     .sw-list li { padding: 0.38rem 0 0.38rem 1.1rem; position: relative; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
     .sw-list li:last-child { border-bottom: none; }
     .sw-list li::before { content:'·'; position: absolute; left: 0; color: var(--accent); font-size: 1.1rem; line-height: 1; top: 0.42rem; }
+    .todo-board { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.85rem 1.1rem; margin-bottom: 1.25rem; border-left: 3px solid var(--warn); }
+    .todo-board-title { font-size: 0.82rem; font-weight: 600; margin-bottom: 0.55rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    .todo-list { list-style: none; padding: 0; margin: 0; }
+    .todo-item { display: flex; align-items: flex-start; gap: 0.55rem; padding: 0.42rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; line-height: 1.55; }
+    .todo-item:last-child { border-bottom: none; }
+    .todo-st { flex-shrink: 0; min-width: 2.1rem; font-weight: 700; font-size: 0.72rem; padding: 0.12em 0.35em; border-radius: 4px; text-align: center; }
+    .todo-st.done { background: var(--success-bg); color: var(--success); }
+    .todo-st.pending { background: var(--warn-bg); color: var(--warn); }
+    h3.subsec { font-size: 0.95rem; font-weight: 600; margin: 1.35rem 0 0.65rem; }
     footer { padding: 1.75rem 1.5rem; font-size: 0.8rem; color: var(--faint); border-top: 1px solid var(--border); text-align: center; }
   </style>
 </head>
@@ -94,7 +103,7 @@
     <h1 class="site-title">Kosei Tawara — キャリアプロフィール</h1>
     <p class="tagline">Web エンジニア · フロント／基盤移行／運用とチームの橋渡し <span style="color:var(--faint)">（社外公開版 · 2026-04）</span></p>
     <nav class="toc">
-      <a href="#overview">1. 活動全体像</a><a href="#comparison">2. 定量指標</a><a href="#stack">3. 技術スタック</a><a href="#keyprs">4. 代表PR</a><a href="#projects">5. プロジェクト</a><a href="#scrum">6. スクラム</a><a href="#oncall">7. OnCaller</a><a href="#review">8. レビュー姿勢</a><a href="#slack">9. コミュニケーション</a><a href="#strengths">10. 強み</a><a href="#weaknesses">11. 弱み</a><a href="#positioning">12. ポジショニング</a><a href="#next">13. 次の経験</a><a href="#vision">14. 価値観</a><a href="#career-vision">15. ビジョン</a><a href="#copy">16. 転職用コピー</a><a href="#traffic">17. トラフィック</a><a href="#feedback">18. 第三者評価</a>
+      <a href="#career-vision">1. ビジョン</a><a href="#copy">2. 自己紹介</a><a href="#vision">3. 価値観</a><a href="#positioning">4. ポジショニング</a><a href="#strengths">5. 強み</a><a href="#stack">6. 技術スタック</a><a href="#projects">7. プロジェクト</a><a href="#keyprs">8. 代表PR</a><a href="#overview">9. 活動全体像</a><a href="#comparison">10. 定量指標</a><a href="#scrum">11. スクラム</a><a href="#oncall">12. OnCaller</a><a href="#review">13. レビュー姿勢</a><a href="#slack">14. コミュニケーション</a><a href="#feedback">15. 第三者評価</a><a href="#traffic">16. トラフィック</a><a href="#next">17. 次の経験</a><a href="#weaknesses">18. Q&amp;A</a>
     </nav>
   </div>
 </header>
@@ -112,74 +121,155 @@
   <p class="note">データソース: GitHub · Confluence · Slack（200 ユニーク発言）· セッション 17 件 · APM MCP · 本人メモ「働く意義・価値観 (2026)」· 上司/ピアレビュー（匿名化済み）</p>
 </section>
 
-<!-- 1. 活動全体像 -->
-<section id="overview">
-  <h2 class="sec-title">1. アクティビティの全体像</h2>
+<!-- 1. キャリアビジョン -->
+<section id="career-vision">
+  <h2 class="sec-title">1. キャリアビジョン（2 行）と「理由」</h2>
+  <div class="card">
+    <p style="font-size:1.08rem;font-weight:700;margin-bottom:0.4rem;line-height:1.5;">人が壊れない社会を、仕組みとプロダクトで持続可能に実現するエンジニアになる</p>
+    <p style="font-size:1.08rem;font-weight:700;margin-bottom:0.9rem;line-height:1.5;">ドメインとアーキテクチャに沿ってプロダクトを正しく表現し、性能と運用まで含めて改善し続けるエンジニアになる</p>
+    <hr>
+    <p style="color:var(--muted);font-size:0.88rem;">一文目は社会に対する北極星（ミス・孤独・認知負荷の前提）。事業が続かなければ届けられないので「持続可能」を同列に置く。二文目はそのために現場で担う職能定義で、設計・実装・性能・運用・観測まで一気通貫で責任を持ち、一文目を続く形で実装する、という順序。</p>
+  </div>
+</section>
+
+<!-- 2. 転職用コピー -->
+<section id="copy">
+  <h2 class="sec-title">2. 転職サイト自由記述・短文コピー</h2>
   <div class="grid grid-2">
-    <div class="card">
-      <div class="card-title">主要リポジトリ別 PR 数（直近 350 件サンプル）</div>
-      <div class="bar-chart">
-        <div class="bar-row"><span class="bar-label">フロントエンド（Vue/Nuxt）</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">69</span></div>
-        <div class="bar-row"><span class="bar-label">BFF / 管理画面（TS）</span><div class="bar-track"><div class="bar-fill" style="width:68%"></div></div><span class="bar-val">47</span></div>
-        <div class="bar-row"><span class="bar-label">モノリス API（PHP）</span><div class="bar-track"><div class="bar-fill" style="width:67%"></div></div><span class="bar-val">46</span></div>
-        <div class="bar-row"><span class="bar-label">一覧ページ BE（Go）</span><div class="bar-track"><div class="bar-fill" style="width:32%"></div></div><span class="bar-val">22</span></div>
-        <div class="bar-row"><span class="bar-label">エッジ CDN IaC（Terraform）</span><div class="bar-track"><div class="bar-fill" style="width:23%"></div></div><span class="bar-val">16</span></div>
-        <div class="bar-row"><span class="bar-label">デザインシステム</span><div class="bar-track"><div class="bar-fill" style="width:23%"></div></div><span class="bar-val">16</span></div>
-        <div class="bar-row"><span class="bar-label">API Gateway（Go）</span><div class="bar-track"><div class="bar-fill" style="width:16%"></div></div><span class="bar-val">11</span></div>
-        <div class="bar-row"><span class="bar-label">Proto</span><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div><span class="bar-val">7</span></div>
-        <div class="bar-row"><span class="bar-label">検索サービス（Go）</span><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div><span class="bar-val">7</span></div>
-        <div class="bar-row"><span class="bar-label">実験的リポジトリ</span><div class="bar-track"><div class="bar-fill" style="width:9%"></div></div><span class="bar-val">6</span></div>
-      </div>
+    <div class="card"><div class="card-title">中ボリューム（貼り付け用）</div>
+      <p style="font-size:0.86rem;white-space:pre-wrap;">【役割・概要】
+toC Web において、施策の意図・ドメインを理解したうえで、大規模モノリス PHP / Go マイクロサービス / BFF・GraphQL / Nuxt3 SSR / CDN エッジ振り分けに沿ってプロダクトとして一貫した実装が得意（フロント/バック問わず）。
+
+【設計・表現力】
+複雑ロジックは構造を先に決めリーダブルに分解し、重要な前提はコメントや PR で「なぜ」を残す。
+
+【パフォーマンス・改善】
+実測に基づくアプリ層の改善。仕様やスコープが負荷と噛み合わないときは早期に論点化し、段階投入や計測を調整。
+
+【主な成果例】
+各テーマ別人気店一覧ページ群と主要ページの段階的 Go 化・CDN エッジ振り分け、障害の再発防止（ポストモーテム・監視・手順）、リリースフローとオンボーディングの標準化、スクラム運営。
+
+【次に活かしたいこと】
+社会的必要性と持続性が揃う事業で、ミスと過負荷を前提に人を守るプロダクトづくりに寄与する。</p>
     </div>
-    <div class="card">
-      <div class="card-title">月別 PR 数 — 主要スパイク解説</div>
-      <ul>
-        <li><strong>2024-12（54 PR）</strong>: 一覧ページ Go 化の大型施策集中投入期。フロント/バック/Infra を横断して 1 ヶ月にスパイク。</li>
-        <li><strong>2026-04（50 PR）</strong>: エリア・ジャンル別一覧の retty3 振り分け施策。3 リポジトリを横断した安全リリース分割。</li>
-        <li><strong>2025-01〜02（22・13 PR）</strong>: スクラム運営と施策推進が安定的に重なった時期。</li>
-        <li><strong>2022-04〜2023-03（内定者インターン）</strong>: 入社前インターンとして参加。正社員換算の比較対象外。</li>
+    <div class="card"><div class="card-title">短い版</div>
+      <p style="font-size:0.94rem;line-height:1.8;">toC 大規模サービスでドメインとアーキテクチャに沿って実装を揃え、コメントと PR で複雑さを説明可能にするのが得意。実測ベースの性能改善と施策スコープ調整の経験あり。次は必須度の高い領域で同じ型を再現したい。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 価値観 -->
+<section id="vision">
+  <h2 class="sec-title">3. 働く意義・価値観（全文構造化）</h2>
+  <div class="grid grid-2">
+    <div class="card"><div class="card-title">0. このドキュメントの目的</div><ul class="vlist"><li>自分の「働く理由」を言語化する</li><li>会社選び・志望動機・面接でブレない軸を持つ</li><li>表面的な条件ではなく本質的な判断基準を持つ</li></ul></div>
+    <div class="card" style="grid-column:1/-1;"><div class="card-title">1. 働く意義（最上位）</div>
+      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:0.75rem;">根底にあるのは「<strong>困っている人・頑張っている人を IT の力で助けたい、支えたい、困りを軽減させたい</strong>」という一点。それを 3 つの柱に分解して働く理由としている。</p>
+      <ul class="vlist">
+        <li><span class="vk">テーゼ</span><strong>人が壊れない社会を作るために働く</strong></li>
+        <li><span class="vk">① ミスで壊れない</span>人的ミスで自分を責めてしまう人を減らしたい。ミスを個人責任にせず仕組みで守り、自己肯定感を失ってしまうことがない世の中を目指す。「失敗してもシステムが受け止める」設計が理想。</li>
+        <li><span class="vk">② 孤独で壊れない</span>不安・孤独を減らし、感情面で人を守る。自己肯定感は「上げる」より「下げない」設計を優先する。</li>
+        <li><span class="vk">③ 認知負荷で壊れない</span>やりがいを感じにくいルーティン業務は IT で解決させ、その人が人・プロダクト・サービス、そしてプライベートの充実により多くの時間を使えるようにしたい。残業＝能力が発揮できない状態。疲労では品質が落ちる前提で設計する。</li>
       </ul>
-      <p class="note">Frontend / Backend / Infra / IaC / Design リポジトリを跨いで毎月コミットする「全レイヤー対応」プロファイル。AI ツール（Cursor / Devin）活用後も自己検証は欠かさない。</p>
     </div>
+    <div class="card" style="grid-column:1/-1;"><div class="card-title">1-補. AI 時代における人間の役割</div>
+      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:0.75rem;">AI 活用が当たり前になったこの時代だからこそ、エンジニアリングで担う役割も変わる。加えて、<strong>人間の認知負荷が高い部分はシステムで軽減・削減したい・すべき</strong>と考えている（AI だけに任せず、仕組み全体で「頭を使わなくてよい領域」を減らす）。</p>
+      <ul class="vlist">
+        <li><span class="vk">IT に任せること</span>反復・ルーティン・ヒューマンエラーが起きやすい定型業務。AI が代替できる「やりがいを感じにくい作業」はどんどん自動化する。</li>
+        <li><span class="vk">認知負荷をシステムで下げる</span>暗黙知の依存・手順の多さ・例外だらけの UI など、人の頭に無理に載せている負荷は、情報設計・自動化・ガードレール・ドキュメント・オンボーディングを含めてシステム側で吸収する。人が本当に判断すべきことに集中できるよう、エンジニアとして削るべきところを削る。</li>
+        <li><span class="vk">人間が担うこと</span>判断・共感・創造・関係構築など、人間にしか成せないことにより集中できる環境を IT で実現する。</li>
+        <li><span class="vk">目指す世界</span>「AI 活用のこの時代に、人間だけが成せることをより注力できる社会」。IT は人を代替するのではなく、人がより人間らしくいられるための基盤になるべきだと考えている。</li>
+      </ul>
+    </div>
+    <div class="card"><div class="card-title">2. 現実理解（転機）</div><ul class="vlist">
+      <li>利益が出ない会社は続かない / キャッシュが尽きたら届けたいものも届けられなくなる</li>
+      <li>なくても困らないサービスは優先度が低く投資されにくい構造がある</li>
+      <li>「良いこと」だけではダメ。「利益が出ること」だけでもダメ。統合条件は <strong>良いこと × 利益が出ること</strong></li>
+      <li style="font-size:0.86rem;color:var(--muted);">利益は直接的な売上だけを指さない。プロダクトを通じたユーザーへの貢献度が積み重なり、継続利用・信頼・ブランドとして事業に還元されることも「利益が出ること」に含まれる。</li>
+    </ul></div>
+    <div class="card"><div class="card-title">3. 会社選びの必須 3 条件</div><ul class="vlist">
+      <li><span class="vk">社会的必要性</span>なくなると困る・日常に組み込まれている</li>
+      <li><span class="vk">ビジネスの持続性</span>利益・投資・継続利用が見える</li>
+      <li><span class="vk">人を守る設計思想</span>ミス削減・認知負荷軽減・自己否定を生まない</li>
+    </ul><p style="font-size:0.83rem;color:var(--muted);">この 3 つが揃う会社のみ選ぶ。</p></div>
+    <div class="card"><div class="card-title">4. 価値提供の方向性</div><ul class="vlist">
+      <li><span class="vk">機能的価値</span>ミス削減・業務効率・正しくできる仕組み</li>
+      <li><span class="vk">感情的価値</span>不安・孤独の軽減。自己肯定感は「上げる」より「下げない」</li>
+      <li><span class="vk">避ける設計</span>過度な比較・拒絶の可視化・理由がわからない失敗</li>
+      <li><span class="vk">目指す設計</span>安心できる UI・失敗してもダメージが少ない・自分の価値を感じられる</li>
+    </ul></div>
+    <div class="card"><div class="card-title">5. 強みとの接続</div><ul class="vlist">
+      <li><span class="vk">技術</span>Go / TypeScript、フロント・バック両方</li>
+      <li><span class="vk">経験</span>toC での開発、UX 改善、レコメンド/検索</li>
+      <li><span class="vk">スクラム約 2.5 年</span>スコープ調整・チーム運営・心理的安全性</li>
+      <li><span class="vk">統合</span>人を守るプロダクトとチームを作れるエンジニア</li>
+    </ul></div>
+    <div class="card"><div class="card-title">6. 働き方の定義</div><ul class="vlist">
+      <li><span class="vk">NG</span>納期起因の残業、認知負荷が高い状態での作業、スコープ調整できない環境</li>
+      <li><span class="vk">OK</span>熱中による自発的残業、スコープ調整可能、アジャイル / スクラム</li>
+      <li><span class="vk">その他条件</span>週リモート 3-2、CI/CD、技術投資、年収 650〜700 万以上、心理的安全性</li>
+    </ul></div>
+    <div class="card" style="grid-column:1/-1;"><div class="card-title">7. キャリア戦略と結論</div><ul class="vlist">
+      <li><span class="vk">2 軸</span>ミス削減（機能）と孤独解消（感情）。優先は必須サービス × ミス削減、サブは孤独解消</li>
+      <li><span class="vk">一文</span><strong>人が壊れない社会を、持続可能なビジネスとして実現する</strong></li>
+      <li><span class="vk">分解</span>人を守る（思想）／仕組みで解決する（エンジニアリング）／続く形にする（ビジネス）</li>
+      <li><span class="vk">最後に</span>優しさだけでは続かない。プロダクトへの貢献が利益として還元されない形では満たされない。両方やる。</li>
+    </ul></div>
   </div>
+  <h3>価値観 × 実績のエビデンスマップ</h3>
+  <div class="tbl-wrap"><table><thead><tr><th>価値観</th><th>実績・行動での裏付け</th></tr></thead><tbody>
+    <tr><td>ミス前提・仕組みで守る</td><td>OnCaller 運用の Confluence 整備・リリースフローの標準化・ratio-based 移行・障害時の展開停止判断</td></tr>
+    <tr><td>認知負荷を下げる</td><td>レビューで「優先度低いFB」と明示・セルフレビューで調査結果を先出し・レトロを時間内に収める設計</td></tr>
+    <tr><td>孤独・感情面（チーム）</td><td>朝会テンプレと「グダグダ許容」・after talk・報告ロールを引き受ける姿勢</td></tr>
+    <tr><td>良い × 儲かるの自覚</td><td>「必須でない toC」の構造リスクを言語化済み — 次は統合条件で選ぶ</td></tr>
+  </tbody></table></div>
 </section>
 
-<!-- 2. 定量比較 -->
-<section id="comparison">
-  <h2 class="sec-title">2. 定量指標による位置づけ</h2>
-  <p style="font-size:0.86rem;color:var(--muted);margin-bottom:0.75rem;">正社員入社後（2023-04-01〜）の PR を対象に、同一チームの主要メンバーと PR 数 / Review 数 / Postmortem を横並びにした定量的な位置づけ。<strong>「中央値の上 + ドメイン横断最大幅 + 運用文書整備者」</strong>として可視化。（メンバーハンドルは匿名化）</p>
-  <div class="tbl-wrap">
-    <table>
-      <thead><tr><th>メンバー</th><th style="text-align:right">PR</th><th style="text-align:right">Review</th><th style="text-align:right">Rev/PR</th><th>Postmortem</th><th>主戦場</th></tr></thead>
-      <tbody>
-        <tr><td>Member A</td><td style="text-align:right">1,890</td><td style="text-align:right">4,412</td><td style="text-align:right">2.3</td><td>7 件</td><td>Frontend / toC（AI ツール活用大）</td></tr>
-        <tr><td>Member B</td><td style="text-align:right">1,759</td><td style="text-align:right">3,211</td><td style="text-align:right">1.8</td><td>3 件</td><td>モノリス API / 予約 / 店舗連携</td></tr>
-        <tr><td>Member C</td><td style="text-align:right">1,659</td><td style="text-align:right">1,724</td><td style="text-align:right">1.0</td><td>3 件</td><td>Platform / SRE</td></tr>
-        <tr><td>Member D</td><td style="text-align:right">1,583</td><td style="text-align:right">2,538</td><td style="text-align:right">1.6</td><td>5 件</td><td>Infra / Platform</td></tr>
-        <tr><td>Member E</td><td style="text-align:right">1,008</td><td style="text-align:right">4,153</td><td style="text-align:right">4.1</td><td>6 件</td><td>BFF / Android / レビュー特化</td></tr>
-        <tr class="hl"><td>★ 本人</td><td style="text-align:right">898</td><td style="text-align:right">1,782</td><td style="text-align:right">2.0</td><td>1 件（決済障害）</td><td>一覧 Go 化 / CDN / OnCall</td></tr>
-        <tr><td>Member F</td><td style="text-align:right">676</td><td style="text-align:right">2,080</td><td style="text-align:right">3.1</td><td>0 件</td><td>BFF / 広告サービス周辺</td></tr>
-        <tr><td>Member G</td><td style="text-align:right">632</td><td style="text-align:right">1,782</td><td style="text-align:right">2.8</td><td>0 件</td><td>Frontend</td></tr>
-        <tr><td>Member H</td><td style="text-align:right">440</td><td style="text-align:right">—</td><td style="text-align:right">—</td><td>2 件</td><td>Search / BE</td></tr>
-        <tr><td>Member I</td><td style="text-align:right">407</td><td style="text-align:right">637</td><td style="text-align:right">1.6</td><td>1 件</td><td>Search（ES 移行）</td></tr>
-        <tr><td>Member J</td><td style="text-align:right">381</td><td style="text-align:right">1,780</td><td style="text-align:right">4.7</td><td>1 件</td><td>Experimental / レビュー特化</td></tr>
-      </tbody>
-    </table>
-  </div>
+<!-- 4. ポジショニング -->
+<section id="positioning">
+  <h2 class="sec-title">4. 転職市場でのポジショニング案</h2>
   <div class="grid grid-2">
-    <div class="card"><div class="card-title">PR 出力量の位置づけ</div><p>上位メンバーは AI ツールや自動化を強く活用しており、PR 数だけでの比較は注意が必要。PR のサイズ・難度・横断性で勝負できるレンジに居る。</p></div>
-    <div class="card"><div class="card-title">レビュー: 質と頻度のバランス型</div><p>Review/PR 比 2.0 は中央値ど真ん中。「PR も出すし レビューもする」典型的なシニアコントリビュータ型 — チームを止めずに実装と教育を両立。</p></div>
-    <div class="card"><div class="card-title">ドメイン横断スコアは社内最広クラス</div><p>Frontend（Vue/Nuxt）+ BFF（GraphQL）+ Backend（Go/PHP）+ Edge（Fastly VCL）+ IaC（Terraform）+ Postmortem 執筆を 1 人で跨ぐ — フルスタック軸では最も広いプロファイル。</p></div>
-    <div class="card"><div class="card-title">Postmortem 1 件 — 数より中身で勝負</div><p>自分が起こした障害ではないのに原因究明 → 修復クエリ実行 → Playbook 整備 → IaC 化まで Action Items 4 件すべて owner 化。「単発フルサイクル完遂型」のレアケース。</p></div>
-    <div class="card"><div class="card-title">Confluence 29 ページ作成</div><p>リリースフロー / DB 規約 / オンボード / OnCaller / APM 定例など属人化ドキュメントを継続作成。「運用 × オンボーディング × 規約」に軸足を置く独自性。</p></div>
-    <div class="card"><div class="card-title">OnCaller 「運用文書を整備する側」として希少</div><p>OnCaller ページの最終編集者。primary 担当しながら役割定義と申請フローまで言語化する人材は社内にも他にほぼ居ない。</p></div>
+    <div class="card"><div class="card-title">レガシー大改造請負人</div><p>PHP × MySQL × CDN × Redis の巨大な現行システムを、安全に段階移行できるエンジニア。ratio-based 切替・PR 3 分割・整合性追従などの実装パターンを持つ。</p></div>
+    <div class="card"><div class="card-title">プロセスとコードを両輪で運営</div><p>スプリント運営 / 振り返り / オンボーディング / 規約整備を継続できるテックリード兼スクラム実務者。Confluence 29 ページの整備実績。</p></div>
+    <div class="card"><div class="card-title">高速・データドリブンなフルスタック</div><p>1 スプリントで 10〜20 PR を横断リポジトリに出しつつ、INDEX 有無比較・キャッシュ中身検証・ポストモーテム執筆まで自己完結する手数の多さ。</p></div>
+    <div class="card"><div class="card-title">障害に強い実務系 SRE 兼アプリエンジニア</div><p>OnCaller primary 担当 + Postmortem 執筆 + Playbook 整備 + Webhook 基盤 Terraform 化 + 周辺設計の波及修正までワンセットで回す経験。アプリ実装と運用の両側に足を残せる人材。</p></div>
   </div>
-  <p class="note">データソース: GitHub Search API (author: / reviewed-by: created:&gt;=2023-04-01) / Postmortem 最新 50 件 / ドキュメント編集履歴</p>
 </section>
 
-<!-- 3. 技術スタック -->
+<!-- 5. 強み -->
+<section id="strengths">
+  <h2 class="sec-title">5. 強みの整理</h2>
+  <div class="grid grid-3">
+    <div class="card"><div class="card-title">技術軸</div><ul class="sw-list">
+      <li>PHP→Go の段階的マイグレーションを ratio-based で設計・運用（移行期の事故抑制と段階的検証を両立）</li>
+      <li>MySQL / Redis の実態調査（redis-cli, EXPLAIN）に基づく INDEX 設計と JOIN 最適化</li>
+      <li>Fastly VCL + Terraform でエッジ層の振り分けを設計（エリア別 / テーマ別 / 予約系）</li>
+      <li>クリーンアーキテクチャ（usecase / repository / interfaceadapter）を一貫して適用</li>
+      <li>gRPC / GraphQL / SSR Vue / PHP / Go に跨るフルスタック（1 リポで完結しない施策を貫通）</li>
+      <li>PR 出力量と速度: 1,095 PR / 約 3 年（直近月 20〜50 PR、87% マージ率）</li>
+    </ul></div>
+    <div class="card"><div class="card-title">スクラム / チーム運営</div><ul class="sw-list">
+      <li>スプリントレビューアジェンダ運営を 3 年弱継続（再現可能な仕組み化）</li>
+      <li>「振り返り共有会」を通じた横断的なチーム改善のハブ役</li>
+      <li>BAD/GOOD と議論セクションを定型化し心理的安全性を担保</li>
+      <li>新メンバー向け「環境一覧」「DB 規約」等を整備し、オンボードを資産化</li>
+      <li>ポストモーテム / 障害対応フローへ継続的にコミット（運用とプロセスの一体運営）</li>
+    </ul></div>
+    <div class="card"><div class="card-title">いちエンジニアとしての立ち回り</div><ul class="sw-list">
+      <li>1,822 件のレビュー（コメント 1,391 件）— チームの知識循環の実質的中核</li>
+      <li>レビュートーンが柔らかく対立を避ける（「優先度は低いくらいの FB ✋」「余力あれば 👌」）</li>
+      <li>セルフレビューを高頻度で残し、レビュアー負荷を下げる（[memo] / 要確認でファクトを先出し）</li>
+      <li>歴史的経緯（8 年前の Redis 投入）まで Slack / AI / コードを横断検索して根拠化</li>
+      <li>意思決定が数値ベース（≥100ms で INDEX、画像で前後比較）</li>
+      <li>クロスリポジトリ施策の整合性（PHP↔Go 同等動作、CDN↔Frontend の 3 PR 分割）</li>
+      <li>AI ツール（Cursor / Devin）を活用しつつ自己検証を欠かさない</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- 6. 技術スタック -->
 <section id="stack">
-  <h2 class="sec-title">3. 技術スタック マッピング</h2>
+  <h2 class="sec-title">6. 技術スタック マッピング</h2>
   <div class="grid grid-3">
     <div class="card"><div class="card-title">Backend</div><div class="pills"><span class="pill">Go</span><span class="pill">Clean Architecture</span><span class="pill">gRPC</span><span class="pill">Functional Options</span><span class="pill">PHP (legacy)</span></div><p style="font-size:0.83rem;color:var(--muted);">usecase / repository / interfaceadapter を一貫適用。PHP→Go の ratio-based 移行設計経験あり。</p></div>
     <div class="card"><div class="card-title">Frontend / BFF</div><div class="pills"><span class="pill">Vue / Nuxt 3 SSR</span><span class="pill">GraphQL (BFF)</span><span class="pill">TypeScript</span></div><p style="font-size:0.83rem;color:var(--muted);">SSR 特有バグ（runWithContext / Promise throw 等）まで深掘り対応。</p></div>
@@ -190,28 +280,9 @@
   </div>
 </section>
 
-<!-- 4. 代表 PR -->
-<section id="keyprs">
-  <h2 class="sec-title">4. 代表的な PR・成果物</h2>
-  <div class="tbl-wrap">
-    <table>
-      <thead><tr><th>リポジトリ（抽象化）</th><th>PR</th><th>概要・読み取れるスキル</th></tr></thead>
-      <tbody>
-        <tr><td>一覧ページ BE（Go）</td><td>#477</td><td>広告枠店舗リスト取得の Go 化 — 26 件議論、PHP↔Go 整合性と ratio-based 移行設計</td></tr>
-        <tr><td>一覧ページ BE（Go）</td><td>#518</td><td>GetAllAdRestaurantIDs リファクタ。8 年放置の Redis キーをハードコーディング化 — Slack / AI / コードを横断検索して根拠化</td></tr>
-        <tr><td>エッジ CDN IaC</td><td>#1325-1327</td><td>エリア・ジャンル別一覧 3 軸を retty3 に振り分け。3 PR 分割による安全リリース設計</td></tr>
-        <tr><td>フロントエンド（Vue/Nuxt）</td><td>#8366</td><td>SSR で nuxtApp.runWithContext() が Promise をスローするバグ修正 — Nuxt SSR の深掘り</td></tr>
-        <tr><td>一覧ページ BE（Go）</td><td>#497</td><td>keyword_city IN サブクエリを JOIN に書き換え — EXPLAIN ベースのパフォーマンス改善</td></tr>
-        <tr><td>モノリス API / 一覧ページ BE</td><td>#46870 / #46881</td><td>リリースをタグ打ちフローに統一。README 整備・git コマンド配布まで含む摩擦最小化</td></tr>
-        <tr><td>フロントエンド（Vue/Nuxt）</td><td>#8406</td><td>src/lib をドメイン・機能単位のサブディレクトリに整理 — リファクタリング主導</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- 5. プロジェクト -->
+<!-- 7. プロジェクト -->
 <section id="projects">
-  <h2 class="sec-title">5. 関わったプロジェクト / 動き方マップ</h2>
+  <h2 class="sec-title">7. 関わったプロジェクト / 動き方マップ</h2>
   <p style="font-size:0.86rem;color:var(--muted);margin-bottom:0.85rem;">PR 本文・タイトル・Confluence 整備物から再構成。大規模モノリス PHP → Go マイクロサービス移行の中核に居続けつつ、決済・検索・SSR・運用・性能改善まで広く張る動き方。<strong>アサインを待たず自らスコープ外の課題を発見・Issue 化・バックログ登録・リリースまでボールを持ち続ける自走スタイル</strong>が通底している。</p>
   <div class="grid grid-2">
     <div class="card">
@@ -264,9 +335,93 @@
   </div>
 </section>
 
-<!-- 6. スクラム -->
+<!-- 8. 代表 PR -->
+<section id="keyprs">
+  <h2 class="sec-title">8. 代表的な PR・成果物</h2>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>リポジトリ（抽象化）</th><th>PR</th><th>概要・読み取れるスキル</th></tr></thead>
+      <tbody>
+        <tr><td>一覧ページ BE（Go）</td><td>#477</td><td>広告枠店舗リスト取得の Go 化 — 26 件議論、PHP↔Go 整合性と ratio-based 移行設計</td></tr>
+        <tr><td>一覧ページ BE（Go）</td><td>#518</td><td>GetAllAdRestaurantIDs リファクタ。8 年放置の Redis キーをハードコーディング化 — Slack / AI / コードを横断検索して根拠化</td></tr>
+        <tr><td>エッジ CDN IaC</td><td>#1325-1327</td><td>エリア・ジャンル別一覧 3 軸を retty3 に振り分け。3 PR 分割による安全リリース設計</td></tr>
+        <tr><td>フロントエンド（Vue/Nuxt）</td><td>#8366</td><td>SSR で nuxtApp.runWithContext() が Promise をスローするバグ修正 — Nuxt SSR の深掘り</td></tr>
+        <tr><td>一覧ページ BE（Go）</td><td>#497</td><td>keyword_city IN サブクエリを JOIN に書き換え — EXPLAIN ベースのパフォーマンス改善</td></tr>
+        <tr><td>モノリス API / 一覧ページ BE</td><td>#46870 / #46881</td><td>リリースをタグ打ちフローに統一。README 整備・git コマンド配布まで含む摩擦最小化</td></tr>
+        <tr><td>フロントエンド（Vue/Nuxt）</td><td>#8406</td><td>src/lib をドメイン・機能単位のサブディレクトリに整理 — リファクタリング主導</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 9. 活動全体像 -->
+<section id="overview">
+  <h2 class="sec-title">9. アクティビティの全体像</h2>
+  <div class="grid grid-2">
+    <div class="card">
+      <div class="card-title">主要リポジトリ別 PR 数（直近 350 件サンプル）</div>
+      <div class="bar-chart">
+        <div class="bar-row"><span class="bar-label">フロントエンド（Vue/Nuxt）</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">69</span></div>
+        <div class="bar-row"><span class="bar-label">BFF / 管理画面（TS）</span><div class="bar-track"><div class="bar-fill" style="width:68%"></div></div><span class="bar-val">47</span></div>
+        <div class="bar-row"><span class="bar-label">モノリス API（PHP）</span><div class="bar-track"><div class="bar-fill" style="width:67%"></div></div><span class="bar-val">46</span></div>
+        <div class="bar-row"><span class="bar-label">一覧ページ BE（Go）</span><div class="bar-track"><div class="bar-fill" style="width:32%"></div></div><span class="bar-val">22</span></div>
+        <div class="bar-row"><span class="bar-label">エッジ CDN IaC（Terraform）</span><div class="bar-track"><div class="bar-fill" style="width:23%"></div></div><span class="bar-val">16</span></div>
+        <div class="bar-row"><span class="bar-label">デザインシステム</span><div class="bar-track"><div class="bar-fill" style="width:23%"></div></div><span class="bar-val">16</span></div>
+        <div class="bar-row"><span class="bar-label">API Gateway（Go）</span><div class="bar-track"><div class="bar-fill" style="width:16%"></div></div><span class="bar-val">11</span></div>
+        <div class="bar-row"><span class="bar-label">Proto</span><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div><span class="bar-val">7</span></div>
+        <div class="bar-row"><span class="bar-label">検索サービス（Go）</span><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div><span class="bar-val">7</span></div>
+        <div class="bar-row"><span class="bar-label">実験的リポジトリ</span><div class="bar-track"><div class="bar-fill" style="width:9%"></div></div><span class="bar-val">6</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">月別 PR 数 — 主要スパイク解説</div>
+      <ul>
+        <li><strong>2024-12（54 PR）</strong>: 一覧ページ Go 化の大型施策集中投入期。フロント/バック/Infra を横断して 1 ヶ月にスパイク。</li>
+        <li><strong>2026-04（50 PR）</strong>: エリア・ジャンル別一覧の retty3 振り分け施策。3 リポジトリを横断した安全リリース分割。</li>
+        <li><strong>2025-01〜02（22・13 PR）</strong>: スクラム運営と施策推進が安定的に重なった時期。</li>
+        <li><strong>2022-04〜2023-03（内定者インターン）</strong>: 入社前インターンとして参加。正社員換算の比較対象外。</li>
+      </ul>
+      <p class="note">Frontend / Backend / Infra / IaC / Design リポジトリを跨いで毎月コミットする「全レイヤー対応」プロファイル。AI ツール（Cursor / Devin）活用後も自己検証は欠かさない。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 10. 定量比較 -->
+<section id="comparison">
+  <h2 class="sec-title">10. 定量指標による位置づけ</h2>
+  <p style="font-size:0.86rem;color:var(--muted);margin-bottom:0.75rem;">正社員入社後（2023-04-01〜）の PR を対象に、同一チームの主要メンバーと PR 数 / Review 数 / Postmortem を横並びにした定量的な位置づけ。<strong>「中央値の上 + ドメイン横断最大幅 + 運用文書整備者」</strong>として可視化。（メンバーハンドルは匿名化）</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>メンバー</th><th style="text-align:right">PR</th><th style="text-align:right">Review</th><th style="text-align:right">Rev/PR</th><th>Postmortem</th><th>主戦場</th></tr></thead>
+      <tbody>
+        <tr><td>Member A</td><td style="text-align:right">1,890</td><td style="text-align:right">4,412</td><td style="text-align:right">2.3</td><td>7 件</td><td>Frontend / toC（AI ツール活用大）</td></tr>
+        <tr><td>Member B</td><td style="text-align:right">1,759</td><td style="text-align:right">3,211</td><td style="text-align:right">1.8</td><td>3 件</td><td>モノリス API / 予約 / 店舗連携</td></tr>
+        <tr><td>Member C</td><td style="text-align:right">1,659</td><td style="text-align:right">1,724</td><td style="text-align:right">1.0</td><td>3 件</td><td>Platform / SRE</td></tr>
+        <tr><td>Member D</td><td style="text-align:right">1,583</td><td style="text-align:right">2,538</td><td style="text-align:right">1.6</td><td>5 件</td><td>Infra / Platform</td></tr>
+        <tr><td>Member E</td><td style="text-align:right">1,008</td><td style="text-align:right">4,153</td><td style="text-align:right">4.1</td><td>6 件</td><td>BFF / Android / レビュー特化</td></tr>
+        <tr class="hl"><td>★ 本人</td><td style="text-align:right">898</td><td style="text-align:right">1,782</td><td style="text-align:right">2.0</td><td>1 件（決済障害）</td><td>一覧 Go 化 / CDN / OnCall</td></tr>
+        <tr><td>Member F</td><td style="text-align:right">676</td><td style="text-align:right">2,080</td><td style="text-align:right">3.1</td><td>0 件</td><td>BFF / 広告サービス周辺</td></tr>
+        <tr><td>Member G</td><td style="text-align:right">632</td><td style="text-align:right">1,782</td><td style="text-align:right">2.8</td><td>0 件</td><td>Frontend</td></tr>
+        <tr><td>Member H</td><td style="text-align:right">440</td><td style="text-align:right">—</td><td style="text-align:right">—</td><td>2 件</td><td>Search / BE</td></tr>
+        <tr><td>Member I</td><td style="text-align:right">407</td><td style="text-align:right">637</td><td style="text-align:right">1.6</td><td>1 件</td><td>Search（ES 移行）</td></tr>
+        <tr><td>Member J</td><td style="text-align:right">381</td><td style="text-align:right">1,780</td><td style="text-align:right">4.7</td><td>1 件</td><td>Experimental / レビュー特化</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid grid-2">
+    <div class="card"><div class="card-title">PR 出力量の位置づけ</div><p>上位メンバーは AI ツールや自動化を強く活用しており、PR 数だけでの比較は注意が必要。PR のサイズ・難度・横断性で勝負できるレンジに居る。</p></div>
+    <div class="card"><div class="card-title">レビュー: 質と頻度のバランス型</div><p>Review/PR 比 2.0 は中央値ど真ん中。「PR も出すし レビューもする」典型的なシニアコントリビュータ型 — チームを止めずに実装と教育を両立。</p></div>
+    <div class="card"><div class="card-title">ドメイン横断スコアは社内最広クラス</div><p>Frontend（Vue/Nuxt）+ BFF（GraphQL）+ Backend（Go/PHP）+ Edge（Fastly VCL）+ IaC（Terraform）+ Postmortem 執筆を 1 人で跨ぐ — フルスタック軸では最も広いプロファイル。</p></div>
+    <div class="card"><div class="card-title">Postmortem 1 件 — 数より中身で勝負</div><p>自分が起こした障害ではないのに原因究明 → 修復クエリ実行 → Playbook 整備 → IaC 化まで Action Items 4 件すべて owner 化。「単発フルサイクル完遂型」のレアケース。</p></div>
+    <div class="card"><div class="card-title">Confluence 29 ページ作成</div><p>リリースフロー / DB 規約 / オンボード / OnCaller / APM 定例など属人化ドキュメントを継続作成。「運用 × オンボーディング × 規約」に軸足を置く独自性。</p></div>
+    <div class="card"><div class="card-title">OnCaller 「運用文書を整備する側」として希少</div><p>OnCaller ページの最終編集者。primary 担当しながら役割定義と申請フローまで言語化する人材は社内にも他にほぼ居ない。</p></div>
+  </div>
+  <p class="note">データソース: GitHub Search API (author: / reviewed-by: created:&gt;=2023-04-01) / Postmortem 最新 50 件 / ドキュメント編集履歴</p>
+</section>
+
+<!-- 11. スクラム -->
 <section id="scrum">
-  <h2 class="sec-title">6. スクラム / チーム運営の証跡</h2>
+  <h2 class="sec-title">11. スクラム / チーム運営の証跡</h2>
   <p>スプリントレビューアジェンダの作成や振り返り共有会のオーナーシップが <strong>3 年弱継続</strong> している点が、単なる「いちエンジニア」を超えた強み。</p>
   <div class="timeline">
     <div class="tl-item"><div class="tl-period">2023-05 〜 2025-01</div><div class="tl-what">チーム A / B — スプリントレビューアジェンダを継続作成（約 12 回）</div><div class="tl-note">実質スクラムマスター業務。BAD/GOOD と議論セクションを定型化し心理的安全性を担保。</div></div>
@@ -285,9 +440,9 @@
   </tbody></table></div>
 </section>
 
-<!-- 7. OnCaller -->
+<!-- 12. OnCaller -->
 <section id="oncall">
-  <h2 class="sec-title">7. OnCaller 業務 — 障害対応・運用整備</h2>
+  <h2 class="sec-title">12. OnCaller 業務 — 障害対応・運用整備</h2>
   <p>運用ドキュメントの最終編集者であり、外部決済キャンペーン障害ポストモーテムの著者。primary 待機義務＋手当を引き受けながら、対応プロセスそのものを継続的に整備している。</p>
   <div class="card" style="margin-bottom:0.85rem;"><div class="card-title">OnCaller としての基本情報</div>
     <div class="tbl-wrap" style="margin:0;"><table><tbody>
@@ -334,9 +489,9 @@
   </div>
 </section>
 
-<!-- 8. レビュー姿勢 -->
+<!-- 13. レビュー姿勢 -->
 <section id="review">
-  <h2 class="sec-title">8. レビュー姿勢・コミュニケーションスタイル</h2>
+  <h2 class="sec-title">13. レビュー姿勢・コミュニケーションスタイル</h2>
   <div class="grid grid-2">
     <div class="card"><div class="card-title">Outgoing — 構造のリファクタ提案</div><blockquote>「後ほどの管理が複雑そうに思えました。need 系は 1 struct 内の各 field で管理した方が変更容易や読みやすさ的に良さそうに思いました」</blockquote><p class="q-ctx">バックエンドサービス PR / 同僚へのレビュー</p></div>
     <div class="card"><div class="card-title">Outgoing — 圧をかけずに改善余地を伝えるトーン</div><blockquote>「ロジック集約はできそうに思いました。…優先度は低いくらいの FB です✋ 余力あれば検討しても良さそう程度です👌」</blockquote><p class="q-ctx">優先度を明示して相手に判断を委ねるスタイル</p></div>
@@ -348,9 +503,9 @@
   <p class="note">定量サマリ: 主要レビュイーは Member A（14 件）、Member F（11 件）、Member G（8 件）。「優先度低 / 余力あれば」のトーンを基調にしつつ、構造的設計指摘・クロスリポ整合性指摘・歴史的経緯の調査・性能データ提示など多面的にコメント。</p>
 </section>
 
-<!-- 9. Slack -->
+<!-- 14. Slack -->
 <section id="slack">
-  <h2 class="sec-title">9. コミュニケーション分析（200 ユニーク発言）</h2>
+  <h2 class="sec-title">14. コミュニケーション分析（200 ユニーク発言）</h2>
   <p style="font-size:0.86rem;color:var(--muted);margin-bottom:0.85rem;">6 テーマ（障害/オンコール/スクラム/提案/振り返り/サポート）で横断検索し、重複除去後 200 ユニーク発言を抽出。チャンネル分布・絵文字・語尾・キーワードを定量化。</p>
   <div class="grid grid-2">
     <div class="card"><div class="card-title">発言が集中するチャンネル TOP11</div>
@@ -417,41 +572,105 @@
   </div>
 </section>
 
-<!-- 10. 強み -->
-<section id="strengths">
-  <h2 class="sec-title">10. 強みの整理</h2>
-  <div class="grid grid-3">
-    <div class="card"><div class="card-title">技術軸</div><ul class="sw-list">
-      <li>PHP→Go の段階的マイグレーションを ratio-based で設計・運用（移行期の事故抑制と段階的検証を両立）</li>
-      <li>MySQL / Redis の実態調査（redis-cli, EXPLAIN）に基づく INDEX 設計と JOIN 最適化</li>
-      <li>Fastly VCL + Terraform でエッジ層の振り分けを設計（エリア別 / テーマ別 / 予約系）</li>
-      <li>クリーンアーキテクチャ（usecase / repository / interfaceadapter）を一貫して適用</li>
-      <li>gRPC / GraphQL / SSR Vue / PHP / Go に跨るフルスタック（1 リポで完結しない施策を貫通）</li>
-      <li>PR 出力量と速度: 1,095 PR / 約 3 年（直近月 20〜50 PR、87% マージ率）</li>
-    </ul></div>
-    <div class="card"><div class="card-title">スクラム / チーム運営</div><ul class="sw-list">
-      <li>スプリントレビューアジェンダ運営を 3 年弱継続（再現可能な仕組み化）</li>
-      <li>「振り返り共有会」を通じた横断的なチーム改善のハブ役</li>
-      <li>BAD/GOOD と議論セクションを定型化し心理的安全性を担保</li>
-      <li>新メンバー向け「環境一覧」「DB 規約」等を整備し、オンボードを資産化</li>
-      <li>ポストモーテム / 障害対応フローへ継続的にコミット（運用とプロセスの一体運営）</li>
-    </ul></div>
-    <div class="card"><div class="card-title">いちエンジニアとしての立ち回り</div><ul class="sw-list">
-      <li>1,822 件のレビュー（コメント 1,391 件）— チームの知識循環の実質的中核</li>
-      <li>レビュートーンが柔らかく対立を避ける（「優先度は低いくらいの FB ✋」「余力あれば 👌」）</li>
-      <li>セルフレビューを高頻度で残し、レビュアー負荷を下げる（[memo] / 要確認でファクトを先出し）</li>
-      <li>歴史的経緯（8 年前の Redis 投入）まで Slack / AI / コードを横断検索して根拠化</li>
-      <li>意思決定が数値ベース（≥100ms で INDEX、画像で前後比較）</li>
-      <li>クロスリポジトリ施策の整合性（PHP↔Go 同等動作、CDN↔Frontend の 3 PR 分割）</li>
-      <li>AI ツール（Cursor / Devin）を活用しつつ自己検証を欠かさない</li>
-    </ul></div>
+<!-- 15. 第三者評価 -->
+<section id="feedback">
+  <h2 class="sec-title">15. 第三者評価（上司・ピアレビュー要約）</h2>
+  <p style="font-size:0.86rem;color:var(--muted);margin-bottom:0.85rem;">直近半年の評価コメントを要約して格納。固有名はマスク済み。原文を社外に出す場合は各記載者の許諾が必要。</p>
+  <div class="fb"><div class="fb-lbl">上長評価（プロダクト軸）</div><p>部門目標達成に貢献する提案と行動で成果が出た。開発生産性の維持・向上や安定運用につながる開発が継続できた。スクラムマスターとして調整やチーム間連携に貢献し、施策全体を安定して前に進める力が発揮されていた。次のステップとして施策の狙いや効果を言語化して共有できると、貢献がより伝わりやすい。</p></div>
+  <div class="fb"><div class="fb-lbl">上長評価（技術軸）</div><p>管理画面や運用まわりの不具合対応・品質改善など、求められたことをエンジニアとして堅実に取り組んでいた。</p></div>
+  <div class="fb"><div class="fb-lbl">上長評価（UX・業務効率）</div><p>信頼を勝ち取るという目的においては達成できたと評価。</p></div>
+  <div class="fb"><div class="fb-lbl">ピアレビュー（四半期の総括例）</div><p>管理画面・アライアンス対応（店舗トップ・予約動線など）で、ユーザー体験と業務効率の両面から細かな改善を粘り強く積み重ねた。デザイナー・企画と連携し表示・挙動・パフォーマンスの違和感を一つずつ解消し、User Happy につながるアウトプットを安定して出していた。不具合・問い合わせでは原因整理から技術的に解決までやり切る姿勢がチームの安心感につながった。次は施策の狙いや効果の言語化で貢献の可視化。</p></div>
+  <div class="fb"><div class="fb-lbl">ピアレビュー（大型施策・スクラム）</div><p>特定機能を全レイヤーで実装し部門の重要施策を完遂。スクラムマスターとしてスプリント単位の仕様調整からリリースアナウンスまで責任を持った。非エンジニアへの姿勢が良く、プランナーに対して責任を持ってボールを取る発言や、相手の意図を先に受け取ろうとする姿勢が一貫していた。部門目標は未達だった期も貢献度を加味して高評価。</p></div>
+  <div class="fb"><div class="fb-lbl">ピアレビュー（基盤・障害対応）</div><p>gRPC・モノリスからの移行・CDN/エッジ対応を複数領域で実施。障害時の動きが速く、原因特定から修正リリースまで当日中に完結することが複数あった。</p></div>
+  <div class="fb"><div class="fb-lbl">ピアレビュー（課題の可視化と改善）</div><p>検索クエリや各種表示など、気づいた課題をチケットにまとめ関係者と内容を揃えた上で改善を進めた点が評価に値する。</p></div>
+  <div class="fb"><div class="fb-lbl">企画ロールからの声（割れ窓・業務効率）</div><p>バックログでは管理しづらい軽微修正や、管理画面を日常的に使うオペレーション職からの声をもとにした仕様改善に積極着手。不要ページ削除や高頻度業務の挙動改善で工数削減とプチストレス解消を複数実現。割れ窓リストを継続確認してくれた存在として心強く、すぐにチケット化できないときでも相談できる状態を作ってくれた。迅速かつ丁寧なエンジニア相談対応で業務が進んだ。</p></div>
+  <div class="fb"><div class="fb-lbl">ピアレビュー（信頼・認知）</div><p>特定ドメインに積極的に取り組み、エンジニア以外との信頼がさらに上がった。本人の強みを周囲が一言で指せるラベルを見つけていけると良い。</p></div>
+  <div class="fb"><div class="fb-lbl">ピアレビュー（スクラム・品質）</div><p>スクラムマスターとして献身的にチームをまとめて感謝している。特定ドメインの知見も増えて頼もしい。改善点としてリリース後の不具合が複数あった印象があり、検証でエッジケース確認を必ず、との提案。</p></div>
+  <div class="fb"><div class="fb-lbl">ピアレビュー（広く活躍・組織変化）</div><p>割れ窓・問い合わせ・スクラムマスターなど非常に広く活躍。プロダクトを良い方向に持っていくためチーム内外と話す動きが継続。組織変化が大きい時期はスクラム全体の情報や温度感のズレに注意すると良さそう。</p></div>
+  <div class="fb"><div class="fb-lbl">ピアレビュー（コミュニケーション原則）</div><p>まず聞く、対話する、率直に言い合うを自然に体現。実装だけでなく情報共有やチーム間連携でスクラムマスターとしてチームが判断できる環境を作っていた。</p></div>
+  <div class="fb"><div class="fb-lbl">上長・ピア（成長テーマ）</div><p>多くのタスクに丁寧に取り組み安定したアウトプット。今後はビジネス・プロダクト・機能への理解（背景や暗黙の意図）をどう高めるか、先を見据えた思考や筋の良い発想のためにどんな取り組みをするかを考えるとさらに成長。</p></div>
+  <div class="fb"><div class="fb-lbl">ピアレビュー（モノリス脱却）</div><p>大規模モノリス API の段階的な別言語化を同僚エンジニアと進め、レガシー基盤からの脱却が見えてきた、との感謝。</p></div>
+  <div class="fb"><div class="fb-lbl">上長コメント（グレード期待値）</div><p>グレード期待値に対し、スクラムマスター兼務・大型施策のフルスタック実装・レビューでの貢献・職種横断コミュニケーションのすべてで期待を大幅に超える上期だった、との評価（内部メモ）。</p></div>
+</section>
+
+<!-- 16. トラフィック -->
+<section id="traffic">
+  <h2 class="sec-title">16. トラフィック規模（参考・オーダー感）</h2>
+  <div class="grid grid-2">
+    <div class="card"><div class="card-title">第三者・公開情報のオーダー感</div>
+      <div class="tbl-wrap" style="margin:0;"><table><tbody>
+        <tr><td>媒体資料ベースの例</td><td>月間 PV 約 4,400 万・月間 UU 約 2,600 万（業界記事で引用される規模感）</td></tr>
+        <tr><td>コーポレートサイト</td><td>トップページに固定 PV/MAU 記載はなく、ビジョン・案内中心</td></tr>
+        <tr><td>注意点</td><td>推計サイトは定義が異なる数字も出るため、志望先には出典を添えつつ「オーダー感」で述べるのが安全</td></tr>
+      </tbody></table></div>
+    </div>
+    <div class="card"><div class="card-title">APM（社内計測例・過去 30 日 sum）</div>
+      <div class="tbl-wrap" style="margin:0;"><table><tbody>
+        <tr><td>観測の意味</td><td>APM trace の hit 合計。ユーザー 1 操作 ≠ 1 で、マイクロサービス間の二重計上あり</td></tr>
+        <tr><td>gRPC Gateway（HTTP）</td><td>約 19.6 億 hits / 30 日</td></tr>
+        <tr><td>Web フロントエンド</td><td>約 8.2 千万 hits / 30 日</td></tr>
+        <tr><td>広告サービス（gRPC）</td><td>約 2.55 億 hits / 30 日</td></tr>
+        <tr><td>全サービス合算</td><td>約 24.5 億 hits / 30 日（外部 API・BFF 等を含む）</td></tr>
+      </tbody></table></div>
+      <p class="note">数値は時期・環境で変動するため、オーダー感の参考として記載。スクリーンショットはマスク方針。</p>
+    </div>
   </div>
 </section>
 
-<!-- 11. Q&A -->
+<!-- 17. 次の経験 -->
+<section id="next">
+  <h2 class="sec-title">17. 次に取りに行くと差別化が増す経験</h2>
+  <div class="card"><ul class="sw-list">
+    <li>新規プロダクトでの 0→1 アーキテクチャ意思決定（ADR を残せる環境）</li>
+    <li>別ドメイン（決済 / 認証 / 検索 / プラットフォーム）でのフルスタック経験</li>
+    <li>公式なテックリード or スクラムマスター肩書での評価実績</li>
+    <li>社外発信（登壇 / ブログ / OSS）で「移行戦略・チーム運営」を言語化</li>
+    <li>大規模負荷 / 国際化 / 複数リージョンなど、現職ドメイン外の制約条件下での設計</li>
+  </ul></div>
+</section>
+
+<!-- 18. Q&A -->
 <section id="weaknesses">
-  <h2 class="sec-title">11. よくある質問 / 事前 Q&amp;A</h2>
-  <p style="font-size:0.86rem;color:var(--muted);margin-bottom:0.85rem;">採用担当・面接官が抱きやすい疑問に先回りして回答しています。</p>
+  <h2 class="sec-title">18. よくある質問 / 事前 Q&amp;A</h2>
+  <p style="font-size:0.86rem;color:var(--muted);margin-bottom:0.85rem;">採用担当・面接官が抱きやすい疑問に先回りして回答しています。<strong>面接想定の長文回答</strong>は随時追記しており、まだ本文がない項目は下の TODO で常に見える化しています。</p>
+
+  <div class="todo-board" id="interview-todo">
+    <div class="todo-board-title">面接想定回答 — 記入状況（TODO）</div>
+    <ul class="todo-list">
+      <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-why-change">Q1. なぜ転職しようと思ったか？</a></span></li>
+      <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-testing">Q2. テストはどう書いているか？どんな方針で？</a></span></li>
+      <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-challenge">Q3. 最もチャレンジングだった技術的課題は？</a></span></li>
+      <li class="todo-item pending"><span class="todo-st pending">未</span><span class="todo-body">Q4. 仕様が曖昧なまま実装しなければならないとき、どうするか？</span></li>
+      <li class="todo-item pending"><span class="todo-st pending">未</span><span class="todo-body">Q5. 失敗・反省した経験は？</span></li>
+      <li class="todo-item pending"><span class="todo-st pending">未</span><span class="todo-body">Q6. 最近キャッチアップしている技術・トレンドは？</span></li>
+      <li class="todo-item pending"><span class="todo-st pending">未</span><span class="todo-body">Q7. CI/CD はどう構築・運用しているか？</span></li>
+    </ul>
+  </div>
+
+  <h3 class="subsec" id="interview-longform">本人の長文回答（面接用）</h3>
+  <div class="grid grid-2">
+    <div class="card" id="qa-why-change" style="grid-column:1/-1;">
+      <div class="card-title">Q1. なぜ転職しようと思ったか？</div>
+      <p>社内で会社の利益起因でレイオフ対象になったことが発端です。残っても良いと言われたものの、話が来ている以上、今後の会社のビジョンに対して自分が貢献できる可能性は低いと判断されたと受け取りました。</p>
+      <p>元々、入社から約 2 ヶ月の頃に出向の話がありました。そのときは社会人になってすぐで自分に自信がなかったこと、何よりこの会社で成し遂げたいことが何一つ叶えられていない時期だったため、会社に残ることを決断しました。</p>
+      <p>今回を含め、似たような機会が計 2 回あったため、これを機に「今後、自分が IT を活用して解決したいこと」を考え直し、環境を変えることを決断しました。</p>
+    </div>
+    <div class="card" id="qa-testing" style="grid-column:1/-1;">
+      <div class="card-title">Q2. テストはどう書いているか？どんな方針で？</div>
+      <p>フロントエンドに限らず、バックエンド・インフラ周りも、最低でもドメインロジックや施策に関する仕様部分には必ずテストコードを入れ、品質を担保するようにしていました。DB 周りは基本 mock を活用していました。</p>
+      <p>また、複雑な部分や再利用可能な部分もテストで品質を担保するようにしていました。</p>
+    </div>
+    <div class="card" id="qa-challenge" style="grid-column:1/-1;">
+      <div class="card-title">Q3. 最もチャレンジングだった技術的課題は？</div>
+      <p>主要ページの最重要ロジックをレガシーな PHP から Go へリプレイスしたことです。</p>
+      <p>移行の設計をはじめ、移行したロジック自体が等しいかを検証するマイグレーションテスト、さらには移行による不要な仕様の整理やパフォーマンスをより良くするための改善、お店さんからお金をいただいて掲載順位が変わるという移行リスクが高い環境下での段階的移行、メトリクスやパフォーマンスの監視を、すべて主体的に自ら進んで全うしました。</p>
+      <p>設計においては、責務やアーキテクチャに沿った形・移行難易度・スコープなどを考慮して、その時点で最善の設計を提案しました。今後の DevOps にも影響する点があったため、その整備も併せて行いました。</p>
+      <p>不要な部分や不要に cache から取得している部分はハードコーディングし、ホワイト化・パフォーマンス改善・依存部分の除去も行いました。パフォーマンスについては、処理が重い部分の予測や dev 環境での実測をもとに「ボトルネックを探して対応」の反復を続け、改善しました。具体的には INDEX を貼ったり、Redis の cache に載せるなどの対応を行いました。</p>
+      <p>段階的移行の手段としては CDN のパーセンテージルーティングを駆使し、すぐ戻せる準備や影響の少ない箇所から移行することを提案し、実現しました。</p>
+    </div>
+  </div>
+
+  <h3 class="subsec">想定質問（スキル・キャリアの短答）</h3>
   <div class="grid grid-2">
     <div class="card">
       <div class="card-title">Q. 在籍企業が 1 社のみだが、他環境への適応力は？</div>
@@ -478,178 +697,6 @@
       <p>PR 本文に「なぜ」を明記するスタイルを一貫して実践しており（EXPLAIN 計測結果・比較画像・歴史的経緯の調査等）、Confluence にも設計構想ドキュメントを複数作成しています。ADR として整理し直すことは今後の課題です。</p>
     </div>
   </div>
-</section>
-
-<!-- 12. ポジショニング -->
-<section id="positioning">
-  <h2 class="sec-title">12. 転職市場でのポジショニング案</h2>
-  <div class="grid grid-2">
-    <div class="card"><div class="card-title">レガシー大改造請負人</div><p>PHP × MySQL × CDN × Redis の巨大な現行システムを、安全に段階移行できるエンジニア。ratio-based 切替・PR 3 分割・整合性追従などの実装パターンを持つ。</p></div>
-    <div class="card"><div class="card-title">プロセスとコードを両輪で運営</div><p>スプリント運営 / 振り返り / オンボーディング / 規約整備を継続できるテックリード兼スクラム実務者。Confluence 29 ページの整備実績。</p></div>
-    <div class="card"><div class="card-title">高速・データドリブンなフルスタック</div><p>1 スプリントで 10〜20 PR を横断リポジトリに出しつつ、INDEX 有無比較・キャッシュ中身検証・ポストモーテム執筆まで自己完結する手数の多さ。</p></div>
-    <div class="card"><div class="card-title">障害に強い実務系 SRE 兼アプリエンジニア</div><p>OnCaller primary 担当 + Postmortem 執筆 + Playbook 整備 + Webhook 基盤 Terraform 化 + 周辺設計の波及修正までワンセットで回す経験。アプリ実装と運用の両側に足を残せる人材。</p></div>
-  </div>
-</section>
-
-<!-- 13. 次の経験 -->
-<section id="next">
-  <h2 class="sec-title">13. 次に取りに行くと差別化が増す経験</h2>
-  <div class="card"><ul class="sw-list">
-    <li>新規プロダクトでの 0→1 アーキテクチャ意思決定（ADR を残せる環境）</li>
-    <li>別ドメイン（決済 / 認証 / 検索 / プラットフォーム）でのフルスタック経験</li>
-    <li>公式なテックリード or スクラムマスター肩書での評価実績</li>
-    <li>社外発信（登壇 / ブログ / OSS）で「移行戦略・チーム運営」を言語化</li>
-    <li>大規模負荷 / 国際化 / 複数リージョンなど、現職ドメイン外の制約条件下での設計</li>
-  </ul></div>
-</section>
-
-<!-- 14. 価値観 -->
-<section id="vision">
-  <h2 class="sec-title">14. 働く意義・価値観（全文構造化）</h2>
-  <div class="grid grid-2">
-    <div class="card"><div class="card-title">0. このドキュメントの目的</div><ul class="vlist"><li>自分の「働く理由」を言語化する</li><li>会社選び・志望動機・面接でブレない軸を持つ</li><li>表面的な条件ではなく本質的な判断基準を持つ</li></ul></div>
-    <div class="card" style="grid-column:1/-1;"><div class="card-title">1. 働く意義（最上位）</div>
-      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:0.75rem;">根底にあるのは「<strong>困っている人・頑張っている人を IT の力で助けたい、支えたい、困りを軽減させたい</strong>」という一点。それを 3 つの柱に分解して働く理由としている。</p>
-      <ul class="vlist">
-        <li><span class="vk">テーゼ</span><strong>人が壊れない社会を作るために働く</strong></li>
-        <li><span class="vk">① ミスで壊れない</span>人的ミスで自分を責めてしまう人を減らしたい。ミスを個人責任にせず仕組みで守り、自己肯定感を失ってしまうことがない世の中を目指す。「失敗してもシステムが受け止める」設計が理想。</li>
-        <li><span class="vk">② 孤独で壊れない</span>不安・孤独を減らし、感情面で人を守る。自己肯定感は「上げる」より「下げない」設計を優先する。</li>
-        <li><span class="vk">③ 認知負荷で壊れない</span>やりがいを感じにくいルーティン業務は IT で解決させ、その人が人・プロダクト・サービス、そしてプライベートの充実により多くの時間を使えるようにしたい。残業＝能力が発揮できない状態。疲労では品質が落ちる前提で設計する。</li>
-      </ul>
-    </div>
-    <div class="card" style="grid-column:1/-1;"><div class="card-title">1-補. AI 時代における人間の役割</div>
-      <p style="font-size:0.88rem;color:var(--muted);margin-bottom:0.75rem;">AI 活用が当たり前になったこの時代だからこそ、エンジニアリングで担う役割も変わる。加えて、<strong>人間の認知負荷が高い部分はシステムで軽減・削減したい・すべき</strong>と考えている（AI だけに任せず、仕組み全体で「頭を使わなくてよい領域」を減らす）。</p>
-      <ul class="vlist">
-        <li><span class="vk">IT に任せること</span>反復・ルーティン・ヒューマンエラーが起きやすい定型業務。AI が代替できる「やりがいを感じにくい作業」はどんどん自動化する。</li>
-        <li><span class="vk">認知負荷をシステムで下げる</span>暗黙知の依存・手順の多さ・例外だらけの UI など、人の頭に無理に載せている負荷は、情報設計・自動化・ガードレール・ドキュメント・オンボーディングを含めてシステム側で吸収する。人が本当に判断すべきことに集中できるよう、エンジニアとして削るべきところを削る。</li>
-        <li><span class="vk">人間が担うこと</span>判断・共感・創造・関係構築など、人間にしか成せないことにより集中できる環境を IT で実現する。</li>
-        <li><span class="vk">目指す世界</span>「AI 活用のこの時代に、人間だけが成せることをより注力できる社会」。IT は人を代替するのではなく、人がより人間らしくいられるための基盤になるべきだと考えている。</li>
-      </ul>
-    </div>
-    <div class="card"><div class="card-title">2. 現実理解（転機）</div><ul class="vlist">
-      <li>利益が出ない会社は続かない / キャッシュが尽きたら届けたいものも届けられなくなる</li>
-      <li>なくても困らないサービスは優先度が低く投資されにくい構造がある</li>
-      <li>「良いこと」だけではダメ。「利益が出ること」だけでもダメ。統合条件は <strong>良いこと × 利益が出ること</strong></li>
-      <li style="font-size:0.86rem;color:var(--muted);">利益は直接的な売上だけを指さない。プロダクトを通じたユーザーへの貢献度が積み重なり、継続利用・信頼・ブランドとして事業に還元されることも「利益が出ること」に含まれる。</li>
-    </ul></div>
-    <div class="card"><div class="card-title">3. 会社選びの必須 3 条件</div><ul class="vlist">
-      <li><span class="vk">社会的必要性</span>なくなると困る・日常に組み込まれている</li>
-      <li><span class="vk">ビジネスの持続性</span>利益・投資・継続利用が見える</li>
-      <li><span class="vk">人を守る設計思想</span>ミス削減・認知負荷軽減・自己否定を生まない</li>
-    </ul><p style="font-size:0.83rem;color:var(--muted);">この 3 つが揃う会社のみ選ぶ。</p></div>
-    <div class="card"><div class="card-title">4. 価値提供の方向性</div><ul class="vlist">
-      <li><span class="vk">機能的価値</span>ミス削減・業務効率・正しくできる仕組み</li>
-      <li><span class="vk">感情的価値</span>不安・孤独の軽減。自己肯定感は「上げる」より「下げない」</li>
-      <li><span class="vk">避ける設計</span>過度な比較・拒絶の可視化・理由がわからない失敗</li>
-      <li><span class="vk">目指す設計</span>安心できる UI・失敗してもダメージが少ない・自分の価値を感じられる</li>
-    </ul></div>
-    <div class="card"><div class="card-title">5. 強みとの接続</div><ul class="vlist">
-      <li><span class="vk">技術</span>Go / TypeScript、フロント・バック両方</li>
-      <li><span class="vk">経験</span>toC での開発、UX 改善、レコメンド/検索</li>
-      <li><span class="vk">スクラム約 2.5 年</span>スコープ調整・チーム運営・心理的安全性</li>
-      <li><span class="vk">統合</span>人を守るプロダクトとチームを作れるエンジニア</li>
-    </ul></div>
-    <div class="card"><div class="card-title">6. 働き方の定義</div><ul class="vlist">
-      <li><span class="vk">NG</span>納期起因の残業、認知負荷が高い状態での作業、スコープ調整できない環境</li>
-      <li><span class="vk">OK</span>熱中による自発的残業、スコープ調整可能、アジャイル / スクラム</li>
-      <li><span class="vk">その他条件</span>週リモート 3-2、CI/CD、技術投資、年収 650〜700 万以上、心理的安全性</li>
-    </ul></div>
-    <div class="card" style="grid-column:1/-1;"><div class="card-title">7. キャリア戦略と結論</div><ul class="vlist">
-      <li><span class="vk">2 軸</span>ミス削減（機能）と孤独解消（感情）。優先は必須サービス × ミス削減、サブは孤独解消</li>
-      <li><span class="vk">一文</span><strong>人が壊れない社会を、持続可能なビジネスとして実現する</strong></li>
-      <li><span class="vk">分解</span>人を守る（思想）／仕組みで解決する（エンジニアリング）／続く形にする（ビジネス）</li>
-      <li><span class="vk">最後に</span>優しさだけでは続かない。プロダクトへの貢献が利益として還元されない形では満たされない。両方やる。</li>
-    </ul></div>
-  </div>
-  <h3>価値観 × 実績のエビデンスマップ</h3>
-  <div class="tbl-wrap"><table><thead><tr><th>価値観</th><th>実績・行動での裏付け</th></tr></thead><tbody>
-    <tr><td>ミス前提・仕組みで守る</td><td>OnCaller 運用の Confluence 整備・リリースフローの標準化・ratio-based 移行・障害時の展開停止判断</td></tr>
-    <tr><td>認知負荷を下げる</td><td>レビューで「優先度低いFB」と明示・セルフレビューで調査結果を先出し・レトロを時間内に収める設計</td></tr>
-    <tr><td>孤独・感情面（チーム）</td><td>朝会テンプレと「グダグダ許容」・after talk・報告ロールを引き受ける姿勢</td></tr>
-    <tr><td>良い × 儲かるの自覚</td><td>「必須でない toC」の構造リスクを言語化済み — 次は統合条件で選ぶ</td></tr>
-  </tbody></table></div>
-</section>
-
-<!-- 15. キャリアビジョン -->
-<section id="career-vision">
-  <h2 class="sec-title">15. キャリアビジョン（2 行）と「理由」</h2>
-  <div class="card">
-    <p style="font-size:1.08rem;font-weight:700;margin-bottom:0.4rem;line-height:1.5;">人が壊れない社会を、仕組みとプロダクトで持続可能に実現するエンジニアになる</p>
-    <p style="font-size:1.08rem;font-weight:700;margin-bottom:0.9rem;line-height:1.5;">ドメインとアーキテクチャに沿ってプロダクトを正しく表現し、性能と運用まで含めて改善し続けるエンジニアになる</p>
-    <hr>
-    <p style="color:var(--muted);font-size:0.88rem;">一文目は社会に対する北極星（ミス・孤独・認知負荷の前提）。事業が続かなければ届けられないので「持続可能」を同列に置く。二文目はそのために現場で担う職能定義で、設計・実装・性能・運用・観測まで一気通貫で責任を持ち、一文目を続く形で実装する、という順序。</p>
-  </div>
-</section>
-
-<!-- 16. 転職用コピー -->
-<section id="copy">
-  <h2 class="sec-title">16. 転職サイト自由記述・短文コピー</h2>
-  <div class="grid grid-2">
-    <div class="card"><div class="card-title">中ボリューム（貼り付け用）</div>
-      <p style="font-size:0.86rem;white-space:pre-wrap;">【役割・概要】
-toC Web において、施策の意図・ドメインを理解したうえで、大規模モノリス PHP / Go マイクロサービス / BFF・GraphQL / Nuxt3 SSR / CDN エッジ振り分けに沿ってプロダクトとして一貫した実装が得意（フロント/バック問わず）。
-
-【設計・表現力】
-複雑ロジックは構造を先に決めリーダブルに分解し、重要な前提はコメントや PR で「なぜ」を残す。
-
-【パフォーマンス・改善】
-実測に基づくアプリ層の改善。仕様やスコープが負荷と噛み合わないときは早期に論点化し、段階投入や計測を調整。
-
-【主な成果例】
-各テーマ別人気店一覧ページ群と主要ページの段階的 Go 化・CDN エッジ振り分け、障害の再発防止（ポストモーテム・監視・手順）、リリースフローとオンボーディングの標準化、スクラム運営。
-
-【次に活かしたいこと】
-社会的必要性と持続性が揃う事業で、ミスと過負荷を前提に人を守るプロダクトづくりに寄与する。</p>
-    </div>
-    <div class="card"><div class="card-title">短い版</div>
-      <p style="font-size:0.94rem;line-height:1.8;">toC 大規模サービスでドメインとアーキテクチャに沿って実装を揃え、コメントと PR で複雑さを説明可能にするのが得意。実測ベースの性能改善と施策スコープ調整の経験あり。次は必須度の高い領域で同じ型を再現したい。</p>
-    </div>
-  </div>
-</section>
-
-<!-- 17. トラフィック -->
-<section id="traffic">
-  <h2 class="sec-title">17. トラフィック規模（参考・オーダー感）</h2>
-  <div class="grid grid-2">
-    <div class="card"><div class="card-title">第三者・公開情報のオーダー感</div>
-      <div class="tbl-wrap" style="margin:0;"><table><tbody>
-        <tr><td>媒体資料ベースの例</td><td>月間 PV 約 4,400 万・月間 UU 約 2,600 万（業界記事で引用される規模感）</td></tr>
-        <tr><td>コーポレートサイト</td><td>トップページに固定 PV/MAU 記載はなく、ビジョン・案内中心</td></tr>
-        <tr><td>注意点</td><td>推計サイトは定義が異なる数字も出るため、志望先には出典を添えつつ「オーダー感」で述べるのが安全</td></tr>
-      </tbody></table></div>
-    </div>
-    <div class="card"><div class="card-title">APM（社内計測例・過去 30 日 sum）</div>
-      <div class="tbl-wrap" style="margin:0;"><table><tbody>
-        <tr><td>観測の意味</td><td>APM trace の hit 合計。ユーザー 1 操作 ≠ 1 で、マイクロサービス間の二重計上あり</td></tr>
-        <tr><td>gRPC Gateway（HTTP）</td><td>約 19.6 億 hits / 30 日</td></tr>
-        <tr><td>Web フロントエンド</td><td>約 8.2 千万 hits / 30 日</td></tr>
-        <tr><td>広告サービス（gRPC）</td><td>約 2.55 億 hits / 30 日</td></tr>
-        <tr><td>全サービス合算</td><td>約 24.5 億 hits / 30 日（外部 API・BFF 等を含む）</td></tr>
-      </tbody></table></div>
-      <p class="note">数値は時期・環境で変動するため、オーダー感の参考として記載。スクリーンショットはマスク方針。</p>
-    </div>
-  </div>
-</section>
-
-<!-- 18. 第三者評価 -->
-<section id="feedback">
-  <h2 class="sec-title">18. 第三者評価（上司・ピアレビュー要約）</h2>
-  <p style="font-size:0.86rem;color:var(--muted);margin-bottom:0.85rem;">直近半年の評価コメントを要約して格納。固有名はマスク済み。原文を社外に出す場合は各記載者の許諾が必要。</p>
-  <div class="fb"><div class="fb-lbl">上長評価（プロダクト軸）</div><p>部門目標達成に貢献する提案と行動で成果が出た。開発生産性の維持・向上や安定運用につながる開発が継続できた。スクラムマスターとして調整やチーム間連携に貢献し、施策全体を安定して前に進める力が発揮されていた。次のステップとして施策の狙いや効果を言語化して共有できると、貢献がより伝わりやすい。</p></div>
-  <div class="fb"><div class="fb-lbl">上長評価（技術軸）</div><p>管理画面や運用まわりの不具合対応・品質改善など、求められたことをエンジニアとして堅実に取り組んでいた。</p></div>
-  <div class="fb"><div class="fb-lbl">上長評価（UX・業務効率）</div><p>信頼を勝ち取るという目的においては達成できたと評価。</p></div>
-  <div class="fb"><div class="fb-lbl">ピアレビュー（四半期の総括例）</div><p>管理画面・アライアンス対応（店舗トップ・予約動線など）で、ユーザー体験と業務効率の両面から細かな改善を粘り強く積み重ねた。デザイナー・企画と連携し表示・挙動・パフォーマンスの違和感を一つずつ解消し、User Happy につながるアウトプットを安定して出していた。不具合・問い合わせでは原因整理から技術的に解決までやり切る姿勢がチームの安心感につながった。次は施策の狙いや効果の言語化で貢献の可視化。</p></div>
-  <div class="fb"><div class="fb-lbl">ピアレビュー（大型施策・スクラム）</div><p>特定機能を全レイヤーで実装し部門の重要施策を完遂。スクラムマスターとしてスプリント単位の仕様調整からリリースアナウンスまで責任を持った。非エンジニアへの姿勢が良く、プランナーに対して責任を持ってボールを取る発言や、相手の意図を先に受け取ろうとする姿勢が一貫していた。部門目標は未達だった期も貢献度を加味して高評価。</p></div>
-  <div class="fb"><div class="fb-lbl">ピアレビュー（基盤・障害対応）</div><p>gRPC・モノリスからの移行・CDN/エッジ対応を複数領域で実施。障害時の動きが速く、原因特定から修正リリースまで当日中に完結することが複数あった。</p></div>
-  <div class="fb"><div class="fb-lbl">ピアレビュー（課題の可視化と改善）</div><p>検索クエリや各種表示など、気づいた課題をチケットにまとめ関係者と内容を揃えた上で改善を進めた点が評価に値する。</p></div>
-  <div class="fb"><div class="fb-lbl">企画ロールからの声（割れ窓・業務効率）</div><p>バックログでは管理しづらい軽微修正や、管理画面を日常的に使うオペレーション職からの声をもとにした仕様改善に積極着手。不要ページ削除や高頻度業務の挙動改善で工数削減とプチストレス解消を複数実現。割れ窓リストを継続確認してくれた存在として心強く、すぐにチケット化できないときでも相談できる状態を作ってくれた。迅速かつ丁寧なエンジニア相談対応で業務が進んだ。</p></div>
-  <div class="fb"><div class="fb-lbl">ピアレビュー（信頼・認知）</div><p>特定ドメインに積極的に取り組み、エンジニア以外との信頼がさらに上がった。本人の強みを周囲が一言で指せるラベルを見つけていけると良い。</p></div>
-  <div class="fb"><div class="fb-lbl">ピアレビュー（スクラム・品質）</div><p>スクラムマスターとして献身的にチームをまとめて感謝している。特定ドメインの知見も増えて頼もしい。改善点としてリリース後の不具合が複数あった印象があり、検証でエッジケース確認を必ず、との提案。</p></div>
-  <div class="fb"><div class="fb-lbl">ピアレビュー（広く活躍・組織変化）</div><p>割れ窓・問い合わせ・スクラムマスターなど非常に広く活躍。プロダクトを良い方向に持っていくためチーム内外と話す動きが継続。組織変化が大きい時期はスクラム全体の情報や温度感のズレに注意すると良さそう。</p></div>
-  <div class="fb"><div class="fb-lbl">ピアレビュー（コミュニケーション原則）</div><p>まず聞く、対話する、率直に言い合うを自然に体現。実装だけでなく情報共有やチーム間連携でスクラムマスターとしてチームが判断できる環境を作っていた。</p></div>
-  <div class="fb"><div class="fb-lbl">上長・ピア（成長テーマ）</div><p>多くのタスクに丁寧に取り組み安定したアウトプット。今後はビジネス・プロダクト・機能への理解（背景や暗黙の意図）をどう高めるか、先を見据えた思考や筋の良い発想のためにどんな取り組みをするかを考えるとさらに成長。</p></div>
-  <div class="fb"><div class="fb-lbl">ピアレビュー（モノリス脱却）</div><p>大規模モノリス API の段階的な別言語化を同僚エンジニアと進め、レガシー基盤からの脱却が見えてきた、との感謝。</p></div>
-  <div class="fb"><div class="fb-lbl">上長コメント（グレード期待値）</div><p>グレード期待値に対し、スクラムマスター兼務・大型施策のフルスタック実装・レビューでの貢献・職種横断コミュニケーションのすべてで期待を大幅に超える上期だった、との評価（内部メモ）。</p></div>
 </section>
 
 </div>
