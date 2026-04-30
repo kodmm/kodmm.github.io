@@ -640,7 +640,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
       <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-why-change">Q1. なぜ転職しようと思ったか？</a></span></li>
       <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-testing">Q2. テストはどう書いているか？どんな方針で？</a></span></li>
       <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-challenge">Q3. 最もチャレンジングだった技術的課題は？</a></span></li>
-      <li class="todo-item pending"><span class="todo-st pending">未</span><span class="todo-body">Q4. 仕様が曖昧なまま実装しなければならないとき、どうするか？</span></li>
+      <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-ambiguous">Q4. 仕様が曖昧なまま実装しなければならないとき、どうするか？</a></span></li>
       <li class="todo-item pending"><span class="todo-st pending">未</span><span class="todo-body">Q5. 失敗・反省した経験は？</span></li>
       <li class="todo-item pending"><span class="todo-st pending">未</span><span class="todo-body">Q6. 最近キャッチアップしている技術・トレンドは？</span></li>
       <li class="todo-item pending"><span class="todo-st pending">未</span><span class="todo-body">Q7. CI/CD はどう構築・運用しているか？</span></li>
@@ -667,6 +667,11 @@ toC Web において、施策の意図・ドメインを理解したうえで、
       <p>設計においては、責務やアーキテクチャに沿った形・移行難易度・スコープなどを考慮して、その時点で最善の設計を提案しました。今後の DevOps にも影響する点があったため、その整備も併せて行いました。</p>
       <p>不要な部分や不要に cache から取得している部分はハードコーディングし、ホワイト化・パフォーマンス改善・依存部分の除去も行いました。パフォーマンスについては、処理が重い部分の予測や dev 環境での実測をもとに「ボトルネックを探して対応」の反復を続け、改善しました。具体的には INDEX を貼ったり、Redis の cache に載せるなどの対応を行いました。</p>
       <p>段階的移行の手段としては CDN のパーセンテージルーティングを駆使し、すぐ戻せる準備や影響の少ない箇所から移行することを提案し、実現しました。</p>
+    </div>
+    <div class="card" id="qa-ambiguous" style="grid-column:1/-1;">
+      <div class="card-title">Q4. 仕様が曖昧なまま実装しなければならないとき、どうするか？</div>
+      <p>まず施策担当者と仕様の認識を揃える時間を取ります。議論の末すぐに決まらない場合は、すでに決まっている部分や戻る影響が少ない部分から実装を始めます。それも厳しい場合は、無理に進めず待つ姿勢を取ります。</p>
+      <p>スクラムの環境下だったこともあり、早く出して早く PDCA を回すことを念頭に置きながら、その時点で取れる最善の方法を選ぶようにしていました。</p>
     </div>
   </div>
 
