@@ -219,6 +219,76 @@
     footer { padding: 2rem 1.5rem; font-size: 0.8rem; color: var(--faint); border-top: 1px solid var(--border); text-align: center; }
     footer::before { content: ''; display: block; height: 2px; background: var(--grad); border-radius: 2px; margin-bottom: 1.5rem; opacity: 0.4; }
 
+    /* ── Reading progress bar ── */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; z-index: 400;
+      height: 3px; width: 0%;
+      background: var(--grad);
+      pointer-events: none;
+      transition: width 0.08s linear;
+    }
+
+    /* ── Nav current label ── */
+    .nav-current {
+      font-size: 0.72rem; color: var(--accent);
+      padding: 0.2rem 0.7rem 0.2rem 0.9rem;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      max-width: 220px;
+      border-left: 1px solid var(--border);
+      margin-left: auto; flex-shrink: 0;
+      align-self: center;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+
+    /* ── Scroll offset for sticky nav ── */
+    section[id] { scroll-margin-top: 3.2rem; }
+
+    /* ── Section divider visual ── */
+    section + section {
+      border-top: none;
+      margin-top: 0;
+      padding-top: 0;
+    }
+    .section-wrap {
+      padding: 2.5rem 0;
+      border-top: 1px solid var(--border);
+    }
+    .section-wrap:first-child { border-top: none; }
+
+    /* ── Chapter header accent ── */
+    h2.sec-title {
+      font-size: 1.25rem; font-weight: 700; margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 0.65rem;
+    }
+
+    /* ── h3 subsec dot ── */
+    h3.subsec {
+      display: flex; align-items: center; gap: 0.45rem;
+    }
+    h3.subsec::before {
+      content: ''; display: inline-block; width: 7px; height: 7px;
+      border-radius: 50%; background: var(--grad);
+      flex-shrink: 0;
+    }
+
+    /* ── Next section button ── */
+    .next-section-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      margin-top: 1.5rem;
+      font-size: 0.8rem; color: var(--muted);
+      background: none; border: 1px solid var(--border);
+      border-radius: 20px; padding: 0.35rem 0.9rem;
+      cursor: pointer;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+      text-decoration: none;
+    }
+    .next-section-btn:hover {
+      color: var(--accent); border-color: var(--accent);
+      background: var(--accent-bg); text-decoration: none;
+    }
+    .next-section-btn .arrow { font-size: 0.9rem; }
+
     /* ── Back to top button ── */
     #back-to-top {
       position: fixed; bottom: 1.5rem; right: 1.5rem;
@@ -234,6 +304,7 @@
   </style>
 </head>
 <body>
+<div id="progress-bar"></div>
 <header class="page-header">
   <div class="page-header-inner">
     <h1 class="site-title">Kosei Tawara — キャリアプロフィール</h1>
@@ -242,6 +313,7 @@
 </header>
 <nav class="toc">
   <a href="#career-vision">1. ビジョン</a><a href="#copy">2. 自己紹介</a><a href="#vision">3. 価値観</a><a href="#positioning">4. ポジショニング</a><a href="#strengths">5. 強み</a><a href="#stack">6. 技術スタック</a><a href="#projects">7. プロジェクト</a><a href="#keyprs">8. 代表PR</a><a href="#overview">9. 活動全体像</a><a href="#comparison">10. 定量指標</a><a href="#scrum">11. スクラム</a><a href="#oncall">12. OnCaller</a><a href="#review">13. レビュー姿勢</a><a href="#slack">14. コミュニケーション</a><a href="#feedback">15. 第三者評価</a><a href="#traffic">16. トラフィック</a><a href="#next">17. 次の経験</a><a href="#weaknesses">18. Q&amp;A</a><a href="#hobbies">🌊 趣味</a>
+  <span class="nav-current" id="nav-current"></span>
 </nav>
 <div class="container">
 
@@ -911,51 +983,105 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <script>
 (function(){
-  // fade-in on scroll
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('section, .card, .stat, .hobby-card, .tl-item').forEach(el => {
-    el.classList.add('fade-in');
-    io.observe(el);
+  const nav = document.querySelector('nav.toc');
+  const navHeight = () => nav ? nav.offsetHeight + 3 : 48;
+
+  /* ── Smooth scroll with sticky-nav offset ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if(!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - navHeight();
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
   });
 
-  // bar chart animate
+  /* ── Reading progress bar ── */
+  const bar = document.getElementById('progress-bar');
+  const updateProgress = () => {
+    const h = document.documentElement;
+    const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    if(bar) bar.style.width = pct + '%';
+  };
+
+  /* ── Back-to-top ── */
+  const btn = document.getElementById('back-to-top');
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  window.addEventListener('scroll', () => {
+    updateProgress();
+    btn.classList.toggle('show', window.scrollY > 400);
+  }, { passive: true });
+  updateProgress();
+
+  /* ── Fade-in on scroll ── */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('section, .card, .stat, .hobby-card, .tl-item').forEach(el => {
+    el.classList.add('fade-in'); io.observe(el);
+  });
+
+  /* ── Bar chart animate ── */
   const barIo = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if(e.isIntersecting){
-        e.target.querySelectorAll('.bar-fill').forEach(b => {
-          const w = b.style.width || b.getAttribute('data-w') || '0%';
-          if(!b.getAttribute('data-w')) b.setAttribute('data-w', w);
-          b.style.setProperty('--target-width', w);
-          b.style.width = '0';
-          setTimeout(() => b.classList.add('animated'), 50);
-        });
-        barIo.unobserve(e.target);
-      }
+      if(!e.isIntersecting) return;
+      e.target.querySelectorAll('.bar-fill').forEach(b => {
+        const w = b.getAttribute('data-w') || b.style.width || '0%';
+        if(!b.getAttribute('data-w')) b.setAttribute('data-w', w);
+        b.style.setProperty('--target-width', w);
+        b.style.width = '0';
+        setTimeout(() => b.classList.add('animated'), 60);
+      });
+      barIo.unobserve(e.target);
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('.bar-chart').forEach(el => barIo.observe(el));
 
-  // sticky nav active
-  const navLinks = document.querySelectorAll('nav.toc a');
+  /* ── Sticky nav active + current section label ── */
+  const navLinks = document.querySelectorAll('nav.toc a[href^="#"]');
   const sections = Array.from(document.querySelectorAll('section[id]'));
+  const navCurrent = document.getElementById('nav-current');
+
+  const sectionTitles = {};
+  sections.forEach(s => {
+    const h2 = s.querySelector('h2.sec-title');
+    sectionTitles[s.id] = h2 ? h2.querySelector('.sec-text')?.textContent || h2.textContent : '';
+  });
+
+  let activeSectionId = null;
   const sio = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if(e.isIntersecting){
+        activeSectionId = e.target.id;
         navLinks.forEach(a => {
-          a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+          const isActive = a.getAttribute('href') === '#' + e.target.id;
+          a.classList.toggle('active', isActive);
+          if(isActive && navCurrent){
+            navCurrent.textContent = sectionTitles[e.target.id] || '';
+            /* scroll active link into view in nav */
+            a.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
+          }
         });
       }
     });
-  }, { rootMargin: '-40% 0px -55% 0px' });
+  }, { rootMargin: '-35% 0px -55% 0px' });
   sections.forEach(s => sio.observe(s));
 
-  // back-to-top
-  const btn = document.getElementById('back-to-top');
-  window.addEventListener('scroll', () => {
-    btn.classList.toggle('show', window.scrollY > 400);
-  }, { passive: true });
+  /* ── Inject "next section" buttons ── */
+  const sectionEls = document.querySelectorAll('.container > section[id]');
+  sectionEls.forEach((sec, i) => {
+    if(i >= sectionEls.length - 1) return;
+    const next = sectionEls[i + 1];
+    const nextTitle = sectionTitles[next.id] || '次のセクション';
+    const btn = document.createElement('a');
+    btn.href = '#' + next.id;
+    btn.className = 'next-section-btn';
+    btn.innerHTML = `<span class="arrow">↓</span> ${nextTitle} へ`;
+    sec.appendChild(btn);
+  });
 })();
 </script>
 
