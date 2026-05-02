@@ -632,46 +632,41 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 <!-- 9. 活動全体像 -->
 <section id="overview">
   <h2 class="sec-title"><span class="sec-num">9</span><span class="sec-text">アクティビティの全体像</span></h2>
-  <p style="font-size:0.86rem;color:var(--muted);margin-bottom:1rem;">正社員入社後（2023-04〜）の GitHub merged PR を実測。総数 <strong>567 件</strong>（isucon 等個人リポジトリ除く）。</p>
+  <p style="font-size:0.86rem;color:var(--muted);margin-bottom:1rem;">正社員入社後（2023-04〜）の GitHub PR を全件実測。merged <strong>817 件</strong> / 総 PR <strong>928 件</strong>（isucon 等個人リポジトリ除く・2026-04 時点）。</p>
   <div class="grid grid-2">
     <div class="card">
       <div class="card-title">リポジトリ別 merged PR 数（実測・全期間）</div>
       <div class="bar-chart">
-        <div class="bar-row"><span class="bar-label">フロントエンド（Vue/Nuxt）</span><div class="bar-track"><div class="bar-fill" data-w="100%" style="width:0"></div></div><span class="bar-val">90</span></div>
-        <div class="bar-row"><span class="bar-label">モノリス API（PHP）</span><div class="bar-track"><div class="bar-fill" data-w="73%" style="width:0"></div></div><span class="bar-val">66</span></div>
-        <div class="bar-row"><span class="bar-label">一覧 BE / ebisu（Go）</span><div class="bar-track"><div class="bar-fill" data-w="72%" style="width:0"></div></div><span class="bar-val">65</span></div>
-        <div class="bar-row"><span class="bar-label">レストランサービス（Go）</span><div class="bar-track"><div class="bar-fill" data-w="69%" style="width:0"></div></div><span class="bar-val">62</span></div>
-        <div class="bar-row"><span class="bar-label">デザインシステム</span><div class="bar-track"><div class="bar-fill" data-w="54%" style="width:0"></div></div><span class="bar-val">49</span></div>
-        <div class="bar-row"><span class="bar-label">管理画面サービス（Go）</span><div class="bar-track"><div class="bar-fill" data-w="36%" style="width:0"></div></div><span class="bar-val">32</span></div>
-        <div class="bar-row"><span class="bar-label">API Gateway（Go/BFF）</span><div class="bar-track"><div class="bar-fill" data-w="28%" style="width:0"></div></div><span class="bar-val">25</span></div>
-        <div class="bar-row"><span class="bar-label">モノリス旧世代（PHP）</span><div class="bar-track"><div class="bar-fill" data-w="24%" style="width:0"></div></div><span class="bar-val">22</span></div>
-        <div class="bar-row"><span class="bar-label">CDN / エッジ IaC</span><div class="bar-track"><div class="bar-fill" data-w="26%" style="width:0"></div></div><span class="bar-val">23</span></div>
-        <div class="bar-row"><span class="bar-label">Proto 定義</span><div class="bar-track"><div class="bar-fill" data-w="17%" style="width:0"></div></div><span class="bar-val">15</span></div>
+        <div class="bar-row"><span class="bar-label">Go マイクロサービス計</span><div class="bar-track"><div class="bar-fill" data-w="100%" style="width:0"></div></div><span class="bar-val">283</span></div>
+        <div class="bar-row"><span class="bar-label">フロントエンド（Vue/Nuxt）</span><div class="bar-track"><div class="bar-fill" data-w="57%" style="width:0"></div></div><span class="bar-val">162</span></div>
+        <div class="bar-row"><span class="bar-label">モノリス API（PHP）</span><div class="bar-track"><div class="bar-fill" data-w="36%" style="width:0"></div></div><span class="bar-val">102</span></div>
+        <div class="bar-row"><span class="bar-label">デザインシステム</span><div class="bar-track"><div class="bar-fill" data-w="20%" style="width:0"></div></div><span class="bar-val">56</span></div>
+        <div class="bar-row"><span class="bar-label">CDN / エッジ IaC</span><div class="bar-track"><div class="bar-fill" data-w="11%" style="width:0"></div></div><span class="bar-val">31</span></div>
+        <div class="bar-row"><span class="bar-label">モノリス旧世代（PHP）</span><div class="bar-track"><div class="bar-fill" data-w="8%" style="width:0"></div></div><span class="bar-val">22</span></div>
+        <div class="bar-row"><span class="bar-label">Proto 定義</span><div class="bar-track"><div class="bar-fill" data-w="7%" style="width:0"></div></div><span class="bar-val">21</span></div>
       </div>
-      <p class="note">フロント〜Go マイクロサービス〜IaC〜Proto まで全レイヤーに PR が分布。単一スタックへの偏りがなく「横断実装者」プロファイル。</p>
+      <p class="note">Go マイクロサービス群（一覧・レストラン・ACP・BFF）を合算すると全体最多。フロント〜バックエンド〜IaC まで全レイヤーに PR が分布している「横断実装者」プロファイル。</p>
     </div>
     <div class="card">
-      <div class="card-title">月別 merged PR 推移（2023-04〜）</div>
-      <div class="tbl-wrap" style="margin-bottom:0.5rem;">
+      <div class="card-title">年別・月別 merged PR 推移（2023-04〜）</div>
+      <div class="tbl-wrap" style="margin-bottom:0.65rem;">
         <table>
-          <thead><tr><th>期間</th><th style="text-align:right">月平均</th><th style="text-align:right">最多月</th><th>特記</th></tr></thead>
+          <thead><tr><th>年</th><th style="text-align:right">merged</th><th style="text-align:right">月平均</th><th>特記</th></tr></thead>
           <tbody>
-            <tr><td>2023-04〜09</td><td style="text-align:right">11件</td><td style="text-align:right">22件</td><td>ランプアップ〜急加速</td></tr>
-            <tr><td>2023-10〜2024-02</td><td style="text-align:right">20件</td><td style="text-align:right">28件</td><td>安定軌道</td></tr>
-            <tr><td>2024-04〜08</td><td style="text-align:right">20件</td><td style="text-align:right">24件</td><td>横断施策の中期</td></tr>
-            <tr><td>2024-10〜12</td><td style="text-align:right">33件</td><td style="text-align:right">37件</td><td>一覧 Go 化 大型施策集中</td></tr>
-            <tr><td>2025-04〜07</td><td style="text-align:right">25件</td><td style="text-align:right">39件</td><td>決済キャンペーン／最多月</td></tr>
-            <tr><td>2025-10〜12</td><td style="text-align:right">22件</td><td style="text-align:right">33件</td><td>一覧エリア展開・リリース整備</td></tr>
-            <tr><td>2026-01〜02</td><td style="text-align:right">17件</td><td style="text-align:right">23件</td><td>直近</td></tr>
+            <tr><td>2023（4月〜）</td><td style="text-align:right">119</td><td style="text-align:right">13件</td><td>ランプアップ〜急加速</td></tr>
+            <tr><td>2024</td><td style="text-align:right">310</td><td style="text-align:right">26件</td><td>最多年・一覧 Go 化集中</td></tr>
+            <tr><td>2025</td><td style="text-align:right">262</td><td style="text-align:right">22件</td><td>決済 / エリア展開</td></tr>
+            <tr><td>2026（〜4月）</td><td style="text-align:right">126</td><td style="text-align:right">32件</td><td>直近・高水準継続</td></tr>
           </tbody>
         </table>
       </div>
       <ul style="font-size:0.83rem;">
-        <li><strong>2025-05（39件）</strong>: 単月最多。決済キャンペーン全機能 + Webhook 基盤化が重なった月。</li>
-        <li><strong>2024-12（37件）</strong>: 一覧ページ Go 化の大型施策。フロント/バック/Infra を横断。</li>
-        <li><strong>2023-04〜06</strong>: 入社初期、4→7→11件とランプアップ。3ヶ月で標準水準に到達。</li>
+        <li><strong>2026-04（51件）</strong>: 単月最多。エリア・ジャンル別一覧 retty3 化の大型展開。</li>
+        <li><strong>2025-05（39件）</strong>: 決済キャンペーン全機能 + Webhook 基盤化が集中。</li>
+        <li><strong>2024-12（44件）</strong>: 一覧ページ Go 化 + フロント/バック/Infra 横断施策。</li>
+        <li><strong>2023-04〜06</strong>: 入社初期 4→11件でランプアップ。3ヶ月で標準水準に到達。</li>
       </ul>
-      <p class="note">Frontend / Backend / Infra / IaC / Design リポジトリを跨いで毎月コミットする「全レイヤー対応」プロファイル。AI ツール（Cursor / Devin）活用後も自己検証は欠かさない。</p>
+      <p class="note">Frontend / Backend / Infra / IaC / Design を毎月横断する「全レイヤー対応」プロファイル。AI ツール（Cursor / Devin）活用後も自己検証は欠かさない。</p>
     </div>
   </div>
 </section>
