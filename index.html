@@ -5,95 +5,207 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kosei Tawara — キャリアプロフィール</title>
   <meta name="description" content="Web エンジニア。フロント／基盤移行／運用とチームの橋渡し。キャリア・技術・評価の詳細要約（社外公開版）。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: light dark;
       --fg: #1a1a1a; --muted: #555; --faint: #888;
-      --bg: #fafafa; --surface: #ffffff; --border: rgba(0,0,0,0.1);
-      --accent: #0969da; --accent-bg: #dbeafe;
-      --success: #1a7f37; --success-bg: #d1fae5;
-      --warn: #9a6700; --warn-bg: #fef9c3;
+      --bg: #f5f7fa; --surface: #ffffff; --border: rgba(0,0,0,0.08);
+      --accent: #2563eb; --accent2: #7c3aed; --accent-bg: #dbeafe;
+      --success: #059669; --success-bg: #d1fae5;
+      --warn: #d97706; --warn-bg: #fef3c7;
       --pill-bg: #f0f0f0;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 28px rgba(0,0,0,0.1), 0 4px 8px rgba(0,0,0,0.05);
+      --grad: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
     }
     @media (prefers-color-scheme: dark) {
       :root {
         --fg: #e6edf3; --muted: #8b949e; --faint: #6e7681;
-        --bg: #0d1117; --surface: #161b22; --border: rgba(255,255,255,0.1);
-        --accent: #58a6ff; --accent-bg: #1d3557;
+        --bg: #0d1117; --surface: #161b22; --border: rgba(255,255,255,0.08);
+        --accent: #58a6ff; --accent2: #a78bfa; --accent-bg: #1d3557;
         --success: #3fb950; --success-bg: #0d2818;
-        --warn: #d29922; --warn-bg: #2d2200;
+        --warn: #f59e0b; --warn-bg: #2d2200;
         --pill-bg: #21262d;
+        --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+        --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+        --shadow-lg: 0 10px 28px rgba(0,0,0,0.5);
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif; background: var(--bg); color: var(--fg); line-height: 1.7; padding-bottom: 4rem; }
+    body { font-family: 'Noto Sans JP', system-ui,-apple-system,"Hiragino Sans",sans-serif; background: var(--bg); color: var(--fg); line-height: 1.75; padding-bottom: 5rem; }
     a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
-    .page-header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 2rem 1.5rem 1.5rem; }
-    .page-header-inner { max-width: 960px; margin: 0 auto; }
-    h1.site-title { font-size: 1.55rem; font-weight: 700; letter-spacing: -0.02em; }
-    .tagline { color: var(--muted); font-size: 0.92rem; margin-top: 0.2rem; }
-    nav.toc { margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 0.3rem 0.7rem; }
-    nav.toc a { font-size: 0.8rem; color: var(--accent); white-space: nowrap; }
+
+    /* ── Hero Header ── */
+    .page-header {
+      background: var(--grad);
+      padding: 3rem 1.5rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(255,255,255,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .page-header-inner { max-width: 960px; margin: 0 auto; position: relative; }
+    h1.site-title { font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.15); }
+    .tagline { color: rgba(255,255,255,0.82); font-size: 0.95rem; margin-top: 0.35rem; }
+
+    /* ── Sticky Nav ── */
+    nav.toc {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      padding: 0.55rem 1.5rem;
+      display: flex; flex-wrap: nowrap; gap: 0 0.15rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    nav.toc::-webkit-scrollbar { display: none; }
+    nav.toc a {
+      font-size: 0.78rem; color: var(--muted); white-space: nowrap;
+      padding: 0.28rem 0.6rem; border-radius: 20px;
+      transition: background 0.15s, color 0.15s;
+    }
+    nav.toc a:hover, nav.toc a.active { background: var(--accent-bg); color: var(--accent); text-decoration: none; }
+
     .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
-    section { padding-top: 2.25rem; }
-    section + section { border-top: 1px solid var(--border); margin-top: 2rem; }
-    h2.sec-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.9rem; padding-bottom: 0.35rem; border-bottom: 2px solid var(--accent); display: inline-block; }
+
+    /* ── Section ── */
+    section { padding-top: 2.5rem; }
+    section + section { border-top: 1px solid var(--border); margin-top: 2.5rem; }
+
+    /* fade-in on scroll */
+    .fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    h2.sec-title {
+      font-size: 1.2rem; font-weight: 700; margin-bottom: 1.1rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    h2.sec-title .sec-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 1.8rem; height: 1.8rem; border-radius: 50%;
+      background: var(--grad); color: #fff;
+      font-size: 0.72rem; font-weight: 700; flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(37,99,235,0.35);
+    }
+    h2.sec-title .sec-text { border-bottom: 2px solid var(--accent); padding-bottom: 0.2rem; }
+
     h3 { font-size: 0.97rem; font-weight: 600; margin: 1.1rem 0 0.5rem; }
-    p { margin-bottom: 0.65rem; }
-    ul { padding-left: 1.2rem; margin-bottom: 0.65rem; } li { margin-bottom: 0.25rem; }
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1.1rem; margin-bottom: 0.65rem; }
-    .card-title { font-size: 0.82rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
-    .grid { display: grid; gap: 0.65rem; }
+    p { margin-bottom: 0.7rem; }
+    ul { padding-left: 1.2rem; margin-bottom: 0.65rem; } li { margin-bottom: 0.3rem; }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 0.75rem;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+      border-color: rgba(88,166,255,0.3);
+    }
+    .card-title { font-size: 0.82rem; font-weight: 600; margin-bottom: 0.55rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* ── Grid ── */
+    .grid { display: grid; gap: 0.75rem; }
     .grid-2 { grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); }
     .grid-3 { grid-template-columns: repeat(auto-fit,minmax(210px,1fr)); }
-    .stat-grid { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-bottom: 1.1rem; }
-    .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.65rem 1.1rem; min-width: 130px; flex: 1; }
-    .stat-value { font-size: 1.65rem; font-weight: 700; line-height: 1.1; }
-    .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.1rem; }
-    .stat.accent .stat-value { color: var(--accent); } .stat.success .stat-value { color: var(--success); }
-    .pill { display: inline-block; padding: 0.18em 0.55em; border-radius: 20px; font-size: 0.76rem; font-weight: 500; background: var(--pill-bg); color: var(--fg); }
-    .pill.accent { background: var(--accent-bg); color: var(--accent); } .pill.success { background: var(--success-bg); color: var(--success); } .pill.warn { background: var(--warn-bg); color: var(--warn); }
-    .pills { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.4rem; }
-    .tbl-wrap { overflow-x: auto; margin-bottom: 0.85rem; }
+
+    /* ── Stats ── */
+    .stat-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.2rem; }
+    .stat {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 0.9rem 1.2rem;
+      min-width: 130px; flex: 1;
+      box-shadow: var(--shadow-sm);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .stat:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+    .stat-value {
+      font-size: 1.85rem; font-weight: 700; line-height: 1.1;
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .stat.accent .stat-value, .stat.success .stat-value { background: var(--grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.15rem; }
+
+    /* ── Pills ── */
+    .pill { display: inline-block; padding: 0.2em 0.6em; border-radius: 20px; font-size: 0.76rem; font-weight: 500; background: var(--pill-bg); color: var(--fg); transition: background 0.15s; }
+    .pill.accent { background: var(--accent-bg); color: var(--accent); }
+    .pill.success { background: var(--success-bg); color: var(--success); }
+    .pill.warn { background: var(--warn-bg); color: var(--warn); }
+    .pills { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.45rem; }
+
+    /* ── Table ── */
+    .tbl-wrap { overflow-x: auto; margin-bottom: 0.85rem; border-radius: 10px; box-shadow: var(--shadow-sm); }
     table { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
-    th, td { padding: 0.5rem 0.7rem; text-align: left; border-bottom: 1px solid var(--border); }
+    th, td { padding: 0.55rem 0.8rem; text-align: left; border-bottom: 1px solid var(--border); }
     th { font-weight: 600; color: var(--muted); background: var(--pill-bg); }
-    tr:last-child td { border-bottom: none; } tr.hl td { background: var(--accent-bg); }
-    .bar-chart { display: grid; gap: 0.35rem; }
-    .bar-row { display: flex; align-items: center; gap: 0.45rem; }
+    tr:last-child td { border-bottom: none; }
+    tr.hl td { background: var(--accent-bg); }
+    tbody tr { transition: background 0.15s; }
+    tbody tr:hover td { background: var(--accent-bg); }
+
+    /* ── Bar chart ── */
+    .bar-chart { display: grid; gap: 0.4rem; }
+    .bar-row { display: flex; align-items: center; gap: 0.5rem; }
     .bar-label { font-size: 0.78rem; color: var(--muted); min-width: 190px; max-width: 190px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .bar-track { flex: 1; background: var(--pill-bg); border-radius: 3px; height: 16px; overflow: hidden; }
-    .bar-fill { height: 100%; background: var(--accent); border-radius: 3px; }
+    .bar-track { flex: 1; background: var(--pill-bg); border-radius: 4px; height: 16px; overflow: hidden; }
+    .bar-fill { height: 100%; background: var(--grad); border-radius: 4px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); width: 0; }
+    .bar-fill.animated { width: var(--target-width, 0%); }
     .bar-val { font-size: 0.78rem; color: var(--muted); min-width: 28px; text-align: right; }
-    .timeline { border-left: 2px solid var(--border); margin-left: 0.4rem; padding-left: 1.1rem; }
-    .tl-item { position: relative; margin-bottom: 1.1rem; }
-    .tl-item::before { content:''; position: absolute; left: -1.35rem; top: 0.4rem; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); border: 2px solid var(--bg); }
+
+    /* ── Timeline ── */
+    .timeline { border-left: 2px solid var(--border); margin-left: 0.4rem; padding-left: 1.2rem; }
+    .tl-item { position: relative; margin-bottom: 1.2rem; }
+    .tl-item::before { content:''; position: absolute; left: -1.4rem; top: 0.42rem; width: 10px; height: 10px; border-radius: 50%; background: var(--grad); border: 2px solid var(--bg); box-shadow: 0 0 0 2px var(--accent); }
     .tl-period { font-size: 0.78rem; color: var(--faint); margin-bottom: 0.1rem; }
     .tl-what { font-weight: 600; margin-bottom: 0.1rem; }
     .tl-note { font-size: 0.83rem; color: var(--muted); }
-    blockquote { border-left: 3px solid var(--accent); padding: 0.45rem 0.9rem; margin: 0.4rem 0; color: var(--muted); font-style: italic; font-size: 0.88rem; background: var(--accent-bg); border-radius: 0 5px 5px 0; }
+
+    /* ── Blockquote ── */
+    blockquote { border-left: 3px solid var(--accent); padding: 0.5rem 1rem; margin: 0.5rem 0; color: var(--muted); font-style: italic; font-size: 0.88rem; background: var(--accent-bg); border-radius: 0 8px 8px 0; }
     .q-ctx { font-size: 0.78rem; color: var(--faint); margin-top: 0.2rem; font-style: normal; }
     .note { font-size: 0.8rem; color: var(--faint); margin-top: 0.4rem; }
-    hr { border: none; border-top: 1px solid var(--border); margin: 0.85rem 0; }
+    hr { border: none; border-top: 1px solid var(--border); margin: 0.9rem 0; }
+
+    /* ── Lists ── */
     .vlist { list-style: none; padding: 0; }
-    .vlist li { padding: 0.4rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    .vlist li { padding: 0.45rem 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
     .vlist li:last-child { border-bottom: none; }
     .vk { font-weight: 600; display: inline-block; min-width: 170px; }
-    .fb { border-left: 3px solid var(--accent); padding: 0.65rem 0.9rem; background: var(--surface); border-radius: 0 5px 5px 0; margin-bottom: 0.65rem; }
+    .fb { border-left: 3px solid var(--accent); padding: 0.65rem 1rem; background: var(--surface); border-radius: 0 8px 8px 0; margin-bottom: 0.7rem; box-shadow: var(--shadow-sm); }
     .fb-lbl { font-size: 0.76rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
     .sw-list { list-style: none; padding: 0; }
-    .sw-list li { padding: 0.38rem 0 0.38rem 1.1rem; position: relative; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    .sw-list li { padding: 0.4rem 0 0.4rem 1.2rem; position: relative; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
     .sw-list li:last-child { border-bottom: none; }
-    .sw-list li::before { content:'·'; position: absolute; left: 0; color: var(--accent); font-size: 1.1rem; line-height: 1; top: 0.42rem; }
-    .hobby-section { padding-top: 2.25rem; border-top: 1px solid var(--border); margin-top: 2rem; }
-    .hobby-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 0.9rem; }
-    .hobby-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.1rem; text-align: center; transition: transform 0.15s; }
-    .hobby-card:hover { transform: translateY(-2px); }
-    .hobby-icon { font-size: 2rem; line-height: 1; margin-bottom: 0.45rem; }
-    .hobby-label { font-weight: 600; font-size: 0.88rem; margin-bottom: 0.2rem; }
-    .hobby-note { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+    .sw-list li::before { content:'▸'; position: absolute; left: 0; color: var(--accent); font-size: 0.85rem; top: 0.48rem; }
+
+    /* ── Hobby ── */
+    .hobby-section { padding-top: 2.25rem; border-top: 1px solid var(--border); margin-top: 2.5rem; }
+    .hobby-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.85rem; margin-top: 1rem; }
+    .hobby-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem 1.1rem; text-align: center; transition: transform 0.2s, box-shadow 0.2s; box-shadow: var(--shadow-sm); }
+    .hobby-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: var(--shadow-lg); }
+    .hobby-icon { font-size: 2.2rem; line-height: 1; margin-bottom: 0.5rem; }
+    .hobby-label { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.25rem; }
+    .hobby-note { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
     .hobby-highlight { background: linear-gradient(135deg, var(--accent-bg) 0%, var(--success-bg) 100%); border-color: transparent; }
-    .todo-board { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.85rem 1.1rem; margin-bottom: 1.25rem; border-left: 3px solid var(--warn); }
+
+    /* ── Todo board ── */
+    .todo-board { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 0.9rem 1.2rem; margin-bottom: 1.3rem; border-left: 3px solid var(--warn); box-shadow: var(--shadow-sm); }
     .todo-board-title { font-size: 0.82rem; font-weight: 600; margin-bottom: 0.55rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
     .todo-list { list-style: none; padding: 0; margin: 0; }
     .todo-item { display: flex; align-items: flex-start; gap: 0.55rem; padding: 0.42rem 0; border-bottom: 1px solid var(--border); font-size: 0.88rem; line-height: 1.55; }
@@ -101,20 +213,37 @@
     .todo-st { flex-shrink: 0; min-width: 2.1rem; font-weight: 700; font-size: 0.72rem; padding: 0.12em 0.35em; border-radius: 4px; text-align: center; }
     .todo-st.done { background: var(--success-bg); color: var(--success); }
     .todo-st.pending { background: var(--warn-bg); color: var(--warn); }
-    h3.subsec { font-size: 0.95rem; font-weight: 600; margin: 1.35rem 0 0.65rem; }
-    footer { padding: 1.75rem 1.5rem; font-size: 0.8rem; color: var(--faint); border-top: 1px solid var(--border); text-align: center; }
+
+    h3.subsec { font-size: 0.95rem; font-weight: 600; margin: 1.4rem 0 0.7rem; color: var(--accent); }
+
+    /* ── Footer ── */
+    footer { padding: 2rem 1.5rem; font-size: 0.8rem; color: var(--faint); border-top: 1px solid var(--border); text-align: center; }
+    footer::before { content: ''; display: block; height: 2px; background: var(--grad); border-radius: 2px; margin-bottom: 1.5rem; opacity: 0.4; }
+
+    /* ── Back to top button ── */
+    #back-to-top {
+      position: fixed; bottom: 1.5rem; right: 1.5rem;
+      width: 2.5rem; height: 2.5rem; border-radius: 50%;
+      background: var(--grad); color: #fff; border: none; cursor: pointer;
+      font-size: 1.1rem; box-shadow: var(--shadow-md);
+      opacity: 0; transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 200;
+    }
+    #back-to-top.show { opacity: 1; transform: translateY(0); }
+    #back-to-top:hover { box-shadow: var(--shadow-lg); }
   </style>
 </head>
 <body>
 <header class="page-header">
   <div class="page-header-inner">
     <h1 class="site-title">Kosei Tawara — キャリアプロフィール</h1>
-    <p class="tagline">Web エンジニア · フロント／基盤移行／運用とチームの橋渡し <span style="color:var(--faint)">（社外公開版 · 2026-04）</span></p>
-    <nav class="toc">
-      <a href="#career-vision">1. ビジョン</a><a href="#copy">2. 自己紹介</a><a href="#vision">3. 価値観</a><a href="#positioning">4. ポジショニング</a><a href="#strengths">5. 強み</a><a href="#stack">6. 技術スタック</a><a href="#projects">7. プロジェクト</a><a href="#keyprs">8. 代表PR</a><a href="#overview">9. 活動全体像</a><a href="#comparison">10. 定量指標</a><a href="#scrum">11. スクラム</a><a href="#oncall">12. OnCaller</a><a href="#review">13. レビュー姿勢</a><a href="#slack">14. コミュニケーション</a><a href="#feedback">15. 第三者評価</a><a href="#traffic">16. トラフィック</a><a href="#next">17. 次の経験</a><a href="#weaknesses">18. Q&amp;A</a><a href="#hobbies">🌊 趣味</a>
-    </nav>
+    <p class="tagline">Web エンジニア · フロント／基盤移行／運用とチームの橋渡し <span style="opacity:0.65">（社外公開版 · 2026-04）</span></p>
   </div>
 </header>
+<nav class="toc">
+  <a href="#career-vision">1. ビジョン</a><a href="#copy">2. 自己紹介</a><a href="#vision">3. 価値観</a><a href="#positioning">4. ポジショニング</a><a href="#strengths">5. 強み</a><a href="#stack">6. 技術スタック</a><a href="#projects">7. プロジェクト</a><a href="#keyprs">8. 代表PR</a><a href="#overview">9. 活動全体像</a><a href="#comparison">10. 定量指標</a><a href="#scrum">11. スクラム</a><a href="#oncall">12. OnCaller</a><a href="#review">13. レビュー姿勢</a><a href="#slack">14. コミュニケーション</a><a href="#feedback">15. 第三者評価</a><a href="#traffic">16. トラフィック</a><a href="#next">17. 次の経験</a><a href="#weaknesses">18. Q&amp;A</a><a href="#hobbies">🌊 趣味</a>
+</nav>
 <div class="container">
 
 <!-- 0. サマリ -->
@@ -131,7 +260,7 @@
 
 <!-- 1. キャリアビジョン -->
 <section id="career-vision">
-  <h2 class="sec-title">1. キャリアビジョンと「理由」</h2>
+  <h2 class="sec-title"><span class="sec-num">1</span><span class="sec-text">キャリアビジョンと「理由」</span></h2>
   <div class="card">
     <p style="font-size:1.08rem;font-weight:700;margin-bottom:0.4rem;line-height:1.5;">人が壊れない社会を、仕組みとプロダクトで持続可能に実現するエンジニアになる</p>
     <p style="font-size:1.08rem;font-weight:700;margin-bottom:0.9rem;line-height:1.5;">ドメインとアーキテクチャに沿ってプロダクトを正しく表現し、性能と運用まで含めて改善し続けるエンジニアになる</p>
@@ -142,7 +271,7 @@
 
 <!-- 2. 転職用コピー -->
 <section id="copy">
-  <h2 class="sec-title">2. エンジニアとしての自己紹介</h2>
+  <h2 class="sec-title"><span class="sec-num">2</span><span class="sec-text">エンジニアとしての自己紹介</span></h2>
   <div class="grid grid-2">
     <div class="card"><div class="card-title">中ボリューム（貼り付け用）</div>
       <p style="font-size:0.86rem;white-space:pre-wrap;">【役割・概要】
@@ -168,7 +297,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 3. 価値観 -->
 <section id="vision">
-  <h2 class="sec-title">3. 働く意義・価値観（全文構造化）</h2>
+  <h2 class="sec-title"><span class="sec-num">3</span><span class="sec-text">働く意義・価値観（全文構造化）</span></h2>
   <div class="grid grid-2">
     <div class="card"><div class="card-title">0. このドキュメントの目的</div><ul class="vlist"><li>自分の「働く理由」を言語化する</li><li>会社選び・志望動機・面接でブレない軸を持つ</li><li>表面的な条件ではなく本質的な判断基準を持つ</li></ul></div>
     <div class="card" style="grid-column:1/-1;"><div class="card-title">1. 働く意義（最上位）</div>
@@ -235,7 +364,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 4. ポジショニング -->
 <section id="positioning">
-  <h2 class="sec-title">4. 転職市場でのポジショニング案</h2>
+  <h2 class="sec-title"><span class="sec-num">4</span><span class="sec-text">転職市場でのポジショニング案</span></h2>
   <div class="grid grid-2">
     <div class="card"><div class="card-title">レガシー大改造請負人</div><p>PHP × MySQL × CDN × Redis の巨大な現行システムを、安全に段階移行できるエンジニア。ratio-based 切替・PR 3 分割・整合性追従などの実装パターンを持つ。</p></div>
     <div class="card"><div class="card-title">プロセスとコードを両輪で運営</div><p>スプリント運営 / 振り返り / オンボーディング / 規約整備を継続できるテックリード兼スクラム実務者。Confluence 29 ページの整備実績。</p></div>
@@ -246,7 +375,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 5. 強み -->
 <section id="strengths">
-  <h2 class="sec-title">5. 強みの整理</h2>
+  <h2 class="sec-title"><span class="sec-num">5</span><span class="sec-text">強みの整理</span></h2>
   <div class="grid grid-3">
     <div class="card"><div class="card-title">技術軸</div><ul class="sw-list">
       <li>PHP→Go の段階的マイグレーションを ratio-based で設計・運用（移行期の事故抑制と段階的検証を両立）</li>
@@ -279,7 +408,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 6. 技術スタック -->
 <section id="stack">
-  <h2 class="sec-title">6. 技術スタック マッピング</h2>
+  <h2 class="sec-title"><span class="sec-num">6</span><span class="sec-text">技術スタック マッピング</span></h2>
   <div class="grid grid-3">
     <div class="card"><div class="card-title">Backend</div><div class="pills"><span class="pill">Go</span><span class="pill">Clean Architecture</span><span class="pill">gRPC</span><span class="pill">Functional Options</span><span class="pill">PHP (legacy)</span></div><p style="font-size:0.83rem;color:var(--muted);">usecase / repository / interfaceadapter を一貫適用。PHP→Go の ratio-based 移行設計経験あり。</p></div>
     <div class="card"><div class="card-title">Frontend / BFF</div><div class="pills"><span class="pill">Vue / Nuxt 3 SSR</span><span class="pill">GraphQL (BFF)</span><span class="pill">TypeScript</span></div><p style="font-size:0.83rem;color:var(--muted);">SSR 特有バグ（runWithContext / Promise throw 等）まで深掘り対応。</p></div>
@@ -292,7 +421,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 7. プロジェクト -->
 <section id="projects">
-  <h2 class="sec-title">7. 関わったプロジェクト / 動き方マップ</h2>
+  <h2 class="sec-title"><span class="sec-num">7</span><span class="sec-text">関わったプロジェクト / 動き方マップ</span></h2>
   <p style="font-size:0.86rem;color:var(--muted);margin-bottom:0.85rem;">PR 本文・タイトル・Confluence 整備物から再構成。大規模モノリス PHP → Go マイクロサービス移行の中核に居続けつつ、決済・検索・SSR・運用・性能改善まで広く張る動き方。<strong>アサインを待たず自らスコープ外の課題を発見・Issue 化・バックログ登録・リリースまでボールを持ち続ける自走スタイル</strong>が通底している。</p>
   <div class="grid grid-2">
     <div class="card">
@@ -347,7 +476,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 8. 代表 PR -->
 <section id="keyprs">
-  <h2 class="sec-title">8. 代表的な PR・成果物</h2>
+  <h2 class="sec-title"><span class="sec-num">8</span><span class="sec-text">代表的な PR・成果物</span></h2>
   <div class="tbl-wrap">
     <table>
       <thead><tr><th>リポジトリ（抽象化）</th><th>PR</th><th>概要・読み取れるスキル</th></tr></thead>
@@ -366,7 +495,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 9. 活動全体像 -->
 <section id="overview">
-  <h2 class="sec-title">9. アクティビティの全体像</h2>
+  <h2 class="sec-title"><span class="sec-num">9</span><span class="sec-text">アクティビティの全体像</span></h2>
   <div class="grid grid-2">
     <div class="card">
       <div class="card-title">主要リポジトリ別 PR 数（直近 350 件サンプル）</div>
@@ -398,7 +527,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 10. 定量比較 -->
 <section id="comparison">
-  <h2 class="sec-title">10. 定量指標による位置づけ</h2>
+  <h2 class="sec-title"><span class="sec-num">10</span><span class="sec-text">定量指標による位置づけ</span></h2>
   <p style="font-size:0.86rem;color:var(--muted);margin-bottom:0.75rem;">正社員入社後（2023-04-01〜）の PR を対象に、同一チームの主要メンバーと PR 数 / Review 数 / Postmortem を横並びにした定量的な位置づけ。<strong>「中央値の上 + ドメイン横断最大幅 + 運用文書整備者」</strong>として可視化。（メンバーハンドルは匿名化）</p>
   <div class="tbl-wrap">
     <table>
@@ -431,7 +560,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 11. スクラム -->
 <section id="scrum">
-  <h2 class="sec-title">11. スクラム / チーム運営の証跡</h2>
+  <h2 class="sec-title"><span class="sec-num">11</span><span class="sec-text">スクラム / チーム運営の証跡</span></h2>
   <p>スプリントレビューアジェンダの作成や振り返り共有会のオーナーシップが <strong>3 年弱継続</strong> している点が、単なる「いちエンジニア」を超えた強み。</p>
   <div class="timeline">
     <div class="tl-item"><div class="tl-period">2023-05 〜 2025-01</div><div class="tl-what">チーム A / B — スプリントレビューアジェンダを継続作成（約 12 回）</div><div class="tl-note">実質スクラムマスター業務。BAD/GOOD と議論セクションを定型化し心理的安全性を担保。</div></div>
@@ -458,7 +587,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 12. OnCaller -->
 <section id="oncall">
-  <h2 class="sec-title">12. OnCaller 業務 — 障害対応・運用整備</h2>
+  <h2 class="sec-title"><span class="sec-num">12</span><span class="sec-text">OnCaller 業務 — 障害対応・運用整備</span></h2>
   <p>運用ドキュメントの最終編集者であり、外部決済キャンペーン障害ポストモーテムの著者。primary 待機義務＋手当を引き受けながら、対応プロセスそのものを継続的に整備している。</p>
   <div class="card" style="margin-bottom:0.85rem;"><div class="card-title">OnCaller としての基本情報</div>
     <div class="tbl-wrap" style="margin:0;"><table><tbody>
@@ -509,7 +638,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 13. レビュー姿勢 -->
 <section id="review">
-  <h2 class="sec-title">13. レビュー姿勢・コミュニケーションスタイル</h2>
+  <h2 class="sec-title"><span class="sec-num">13</span><span class="sec-text">レビュー姿勢・コミュニケーションスタイル</span></h2>
   <div class="grid grid-2">
     <div class="card"><div class="card-title">Outgoing — 構造のリファクタ提案</div><blockquote>「後ほどの管理が複雑そうに思えました。need 系は 1 struct 内の各 field で管理した方が変更容易や読みやすさ的に良さそうに思いました」</blockquote><p class="q-ctx">バックエンドサービス PR / 同僚へのレビュー</p></div>
     <div class="card"><div class="card-title">Outgoing — 圧をかけずに改善余地を伝えるトーン</div><blockquote>「ロジック集約はできそうに思いました。…優先度は低いくらいの FB です✋ 余力あれば検討しても良さそう程度です👌」</blockquote><p class="q-ctx">優先度を明示して相手に判断を委ねるスタイル</p></div>
@@ -523,7 +652,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 14. Slack -->
 <section id="slack">
-  <h2 class="sec-title">14. コミュニケーション分析（200 ユニーク発言）</h2>
+  <h2 class="sec-title"><span class="sec-num">14</span><span class="sec-text">コミュニケーション分析（200 ユニーク発言）</span></h2>
   <p style="font-size:0.86rem;color:var(--muted);margin-bottom:0.85rem;">6 テーマ（障害/オンコール/スクラム/提案/振り返り/サポート）で横断検索し、重複除去後 200 ユニーク発言を抽出。チャンネル分布・絵文字・語尾・キーワードを定量化。</p>
   <div class="grid grid-2">
     <div class="card"><div class="card-title">発言が集中するチャンネル TOP11</div>
@@ -592,7 +721,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 15. 第三者評価 -->
 <section id="feedback">
-  <h2 class="sec-title">15. 第三者評価（上司・ピアレビュー要約）</h2>
+  <h2 class="sec-title"><span class="sec-num">15</span><span class="sec-text">第三者評価（上司・ピアレビュー要約）</span></h2>
   <p style="font-size:0.86rem;color:var(--muted);margin-bottom:0.85rem;">直近半年の評価コメントを要約して格納。固有名はマスク済み。原文を社外に出す場合は各記載者の許諾が必要。</p>
   <div class="fb"><div class="fb-lbl">上長評価（プロダクト軸）</div><p>部門目標達成に貢献する提案と行動で成果が出た。開発生産性の維持・向上や安定運用につながる開発が継続できた。スクラムマスターとして調整やチーム間連携に貢献し、施策全体を安定して前に進める力が発揮されていた。次のステップとして施策の狙いや効果を言語化して共有できると、貢献がより伝わりやすい。</p></div>
   <div class="fb"><div class="fb-lbl">上長評価（技術軸）</div><p>管理画面や運用まわりの不具合対応・品質改善など、求められたことをエンジニアとして堅実に取り組んでいた。</p></div>
@@ -613,7 +742,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 16. トラフィック -->
 <section id="traffic">
-  <h2 class="sec-title">16. トラフィック規模（参考・オーダー感）</h2>
+  <h2 class="sec-title"><span class="sec-num">16</span><span class="sec-text">トラフィック規模（参考・オーダー感）</span></h2>
   <div class="grid grid-2">
     <div class="card"><div class="card-title">第三者・公開情報のオーダー感</div>
       <div class="tbl-wrap" style="margin:0;"><table><tbody>
@@ -637,7 +766,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 0.5. プライベート -->
 <section id="hobbies" class="hobby-section">
-  <h2 class="sec-title">プライベートな一面</h2>
+  <h2 class="sec-title"><span class="sec-text">プライベートな一面</span></h2>
   <p style="font-size:0.88rem;color:var(--muted);">仕事の外でも、大切な人を喜ばせたい・笑顔にしたいという気持ちが原動力になっています。</p>
   <div class="hobby-grid">
     <div class="hobby-card hobby-highlight">
@@ -665,7 +794,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 17. 次の経験 -->
 <section id="next">
-  <h2 class="sec-title">17. 次に取りに行くと差別化が増す経験</h2>
+  <h2 class="sec-title"><span class="sec-num">17</span><span class="sec-text">次に取りに行くと差別化が増す経験</span></h2>
   <div class="card"><ul class="sw-list">
     <li>新規プロダクトでの 0→1 アーキテクチャ意思決定（ADR を残せる環境）</li>
     <li>別ドメイン（決済 / 認証 / 検索 / プラットフォーム）でのフルスタック経験</li>
@@ -677,7 +806,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 
 <!-- 18. Q&A -->
 <section id="weaknesses">
-  <h2 class="sec-title">18. よくある質問 / 事前 Q&amp;A</h2>
+  <h2 class="sec-title"><span class="sec-num">18</span><span class="sec-text">よくある質問 / 事前 Q&amp;A</span></h2>
   <p style="font-size:0.86rem;color:var(--muted);margin-bottom:0.85rem;">採用担当・面接官が抱きやすい疑問に先回りして回答しています。<strong>面接想定の長文回答</strong>は随時追記しており、まだ本文がない項目は下の TODO で常に見える化しています。</p>
 
   <div class="todo-board" id="interview-todo">
@@ -793,6 +922,59 @@ toC Web において、施策の意図・ドメインを理解したうえで、
 </section>
 
 </div>
+
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="トップへ">↑</button>
+
+<script>
+(function(){
+  // fade-in on scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('section, .card, .stat, .hobby-card, .tl-item').forEach(el => {
+    el.classList.add('fade-in');
+    io.observe(el);
+  });
+
+  // bar chart animate
+  const barIo = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.bar-fill').forEach(b => {
+          const w = b.style.width || b.getAttribute('data-w') || '0%';
+          if(!b.getAttribute('data-w')) b.setAttribute('data-w', w);
+          b.style.setProperty('--target-width', w);
+          b.style.width = '0';
+          setTimeout(() => b.classList.add('animated'), 50);
+        });
+        barIo.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.bar-chart').forEach(el => barIo.observe(el));
+
+  // sticky nav active
+  const navLinks = document.querySelectorAll('nav.toc a');
+  const sections = Array.from(document.querySelectorAll('section[id]'));
+  const sio = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => sio.observe(s));
+
+  // back-to-top
+  const btn = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('show', window.scrollY > 400);
+  }, { passive: true });
+})();
+</script>
+
 <footer>
   <p>Repository: <a href="https://github.com/kodmm/kodmm.github.io">kodmm/kodmm.github.io</a> — GitHub Pages 用 · 社外公開版（社名・同僚ハンドル・社内固有名はマスク済み）</p>
   <p style="margin-top:0.35rem;">GitHub: <a href="https://github.com/kodmm">@kodmm</a></p>
