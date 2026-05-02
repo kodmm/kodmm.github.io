@@ -651,7 +651,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
       <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-testing">Q2. テストはどう書いているか？どんな方針で？</a></span></li>
       <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-challenge">Q3. 最もチャレンジングだった技術的課題は？</a></span></li>
       <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-ambiguous">Q4. 仕様が曖昧なまま実装しなければならないとき、どうするか？</a></span></li>
-      <li class="todo-item pending"><span class="todo-st pending">未</span><span class="todo-body">Q5. 失敗・反省した経験は？</span></li>
+      <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-failure">Q5. 失敗・反省した経験は？</a></span></li>
       <li class="todo-item pending"><span class="todo-st pending">未</span><span class="todo-body">Q6. 最近キャッチアップしている技術・トレンドは？</span></li>
       <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-cicd">Q7. CI/CD はどう構築・運用しているか？</a></span></li>
     </ul>
@@ -683,6 +683,17 @@ toC Web において、施策の意図・ドメインを理解したうえで、
       <p>PR 時に GitHub Actions で lint / format / test を自動実行しています。Terraform 側は PR チェックで plan を実行し、main マージ後に apply を自動化しています。リリースはタグを打つ形をすでに入社当初から採用しており、大きな課題感はなかったため、そのフローに倣っていないリポジトリがあれば積極的に統一する変更を加えてきました。</p>
       <p>自主的な CD 整備としては、レガシーなリポジトリを入社当初から施策や手隙のタイミングでリプレイスする動きを続けていました。レガシー依存な開発が減少し、依存するページや API も少なくなってきたタイミングで、リリースフローを「branch hook による 1 日 1 回の定時リリース」から「いつでもタグを打てばリリースできる仕組み」に変更しました。</p>
       <p>この変更によって得られた効果は 3 点あります。①社内リポジトリの CD フロー統一化の向上、②リリース担当チームの廃止（担当者がリリースを失念する人的ミスが発生していたが、PR マージ者が自主的にリリースできるようになり漏れがゼロに）、③後から加わるメンバーの認知負荷の軽減です。</p>
+    </div>
+    <div class="card" id="qa-failure" style="grid-column:1/-1;">
+      <div class="card-title">Q5. 失敗・反省した経験は？</div>
+      <h3 class="subsec" style="margin-top:0.5rem;">① OnCaller 中、人を巻き込むのが遅れた経験</h3>
+      <p>弊社では 1 週間単位で primary / secondary の 2 名体制でサービスの障害対応を 24 時間行っています。基本的に primary の対応が困難な場合は secondary へエスカレーションするフローです。</p>
+      <p>あるインシデントでは、原因追及と対応に夢中になっていたことに加え、業務時間外だったため secondary の方の大切なプライベートな時間を奪ってしまう申し訳なさが拭えず、エスカレーションが遅れました。結果として障害時間が超過し、ユーザーさんにご迷惑をおかけしてしまいました。</p>
+      <p>たまたま secondary の方が自ら障害に気づいてサポートしてくれ、プライベートな時間にも関わらず数名のエンジニアが駆けつけてくれたことで事なきを得ました。しかし primary にも関わらず、人が来てくれた際にインシデントコマンダーになれず、他者に委ねてしまいました。</p>
+      <p>この経験から、15 分以上解決の見込みがない場合はサービスの安定稼働を最優先に secondary へエスカレーションするフローを OnCaller 内で確立しました。</p>
+      <h3 class="subsec" style="margin-top:1rem;">② 入社当初、設計確認を怠り PR で 100 件以上の議論を発生させた経験</h3>
+      <p>入社当初、やる気に満ち溢れていたあまり、自分のアピールの仕方を履き違え、設計の確認やコーディングルールを適切に把握しないまま実装を進め、PR 内で 100 件以上の議論を発生させ、リリースを遅らせてしまいました。</p>
+      <p>この経験から、不明瞭で解像度の低い部分は事前に高める動き（認識合わせ・設計段階で Slack 等に設計案を投稿して FB をもらう）を徹底するようになりました。結果として手戻りの少ない開発ができるようになりました。</p>
     </div>
     <div class="card" id="qa-ambiguous" style="grid-column:1/-1;">
       <div class="card-title">Q4. 仕様が曖昧なまま実装しなければならないとき、どうするか？</div>
