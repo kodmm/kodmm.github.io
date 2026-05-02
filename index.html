@@ -688,7 +688,7 @@ toC Web において、施策の意図・ドメインを理解したうえで、
       <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-challenge">Q3. 最もチャレンジングだった技術的課題は？</a></span></li>
       <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-ambiguous">Q4. 仕様が曖昧なまま実装しなければならないとき、どうするか？</a></span></li>
       <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-failure">Q5. 失敗・反省した経験は？</a></span></li>
-      <li class="todo-item pending"><span class="todo-st pending">未</span><span class="todo-body">Q6. 最近キャッチアップしている技術・トレンドは？</span></li>
+      <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-tech">Q6. 最近キャッチアップしている技術・トレンドは？</a></span></li>
       <li class="todo-item done"><span class="todo-st done">済</span><span class="todo-body"><a href="#qa-cicd">Q7. CI/CD はどう構築・運用しているか？</a></span></li>
     </ul>
   </div>
@@ -713,6 +713,15 @@ toC Web において、施策の意図・ドメインを理解したうえで、
       <p>設計においては、責務やアーキテクチャに沿った形・移行難易度・スコープなどを考慮して、その時点で最善の設計を提案しました。今後の DevOps にも影響する点があったため、その整備も併せて行いました。</p>
       <p>不要な部分や不要に cache から取得している部分はハードコーディングし、ホワイト化・パフォーマンス改善・依存部分の除去も行いました。パフォーマンスについては、処理が重い部分の予測や dev 環境での実測をもとに「ボトルネックを探して対応」の反復を続け、改善しました。具体的には INDEX を貼ったり、Redis の cache に載せるなどの対応を行いました。</p>
       <p>段階的移行の手段としては CDN のパーセンテージルーティングを駆使し、すぐ戻せる準備や影響の少ない箇所から移行することを提案し、実現しました。</p>
+    </div>
+    <div class="card" id="qa-tech" style="grid-column:1/-1;">
+      <div class="card-title">Q6. 最近キャッチアップしている技術・トレンドは？</div>
+      <h3 class="subsec" style="margin-top:0.5rem;">① AI を使った開発フローの実例</h3>
+      <p>AI を活用して施策の起案からリリースまでを一気通貫で回している事例を積極的にキャッチアップしています。AI でできることが急速に広がる中で、「人間としての知恵の使い所はどこか」という問いの答えを追い続けています。なお、AI は世界中の知恵の集積・宝庫だと捉えており、うまく活用することで自分自身の思考の質も高められると考えています。</p>
+      <h3 class="subsec" style="margin-top:1rem;">② 今後も変わらない基礎領域</h3>
+      <p>時代が変わっても必要とされ続けるスキルとして、DB 設計・クエリ最適化の知見と、フロントエンド / BFF / バックエンドを分離したマルチリポジトリ構成のアーキテクチャを継続的に学んでいます。「人間にわかりやすいコードは AI にもわかりやすい」という考え方を軸にしており、可読性・変更容易性の高い設計は AI コストの観点でも投資対効果が高いと判断しています。会社・自分のキャリア双方にとって不可欠なスキルと位置づけています。</p>
+      <h3 class="subsec" style="margin-top:1rem;">③ 現在の技術スタックをより深く活かす</h3>
+      <p>現職で採用している技術（Go / Vue・Nuxt 3 / gRPC / Terraform / Fastly / Datadog など）について、より効果的な使い方や最新のベストプラクティスを常に追いかけています。導入済みの技術の「使いこなし度を上げる」ことが、チームの生産性向上と障害対応力の強化に直結すると考えているためです。</p>
     </div>
     <div class="card" id="qa-cicd" style="grid-column:1/-1;">
       <div class="card-title">Q7. CI/CD はどう構築・運用しているか？</div>
