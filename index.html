@@ -163,8 +163,7 @@
     .bar-row { display: flex; align-items: center; gap: 0.5rem; }
     .bar-label { font-size: 0.78rem; color: var(--muted); min-width: 190px; max-width: 190px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .bar-track { flex: 1; background: var(--pill-bg); border-radius: 4px; height: 16px; overflow: hidden; }
-    .bar-fill { height: 100%; background: var(--grad); border-radius: 4px; transition: width 0.8s cubic-bezier(0.4,0,0.2,1); width: 0; }
-    .bar-fill.animated { width: var(--target-width, 0%); }
+    .bar-fill { height: 100%; background: var(--grad); border-radius: 4px; transition: width 0.9s cubic-bezier(0.4,0,0.2,1); }
     .bar-val { font-size: 0.78rem; color: var(--muted); min-width: 28px; text-align: right; }
 
     /* ── Timeline ── */
@@ -571,16 +570,16 @@ toC Web において、施策の意図・ドメインを理解したうえで、
     <div class="card">
       <div class="card-title">主要リポジトリ別 PR 数（直近 350 件サンプル）</div>
       <div class="bar-chart">
-        <div class="bar-row"><span class="bar-label">フロントエンド（Vue/Nuxt）</span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">69</span></div>
-        <div class="bar-row"><span class="bar-label">BFF / 管理画面（TS）</span><div class="bar-track"><div class="bar-fill" style="width:68%"></div></div><span class="bar-val">47</span></div>
-        <div class="bar-row"><span class="bar-label">モノリス API（PHP）</span><div class="bar-track"><div class="bar-fill" style="width:67%"></div></div><span class="bar-val">46</span></div>
-        <div class="bar-row"><span class="bar-label">一覧ページ BE（Go）</span><div class="bar-track"><div class="bar-fill" style="width:32%"></div></div><span class="bar-val">22</span></div>
-        <div class="bar-row"><span class="bar-label">エッジ CDN IaC（Terraform）</span><div class="bar-track"><div class="bar-fill" style="width:23%"></div></div><span class="bar-val">16</span></div>
-        <div class="bar-row"><span class="bar-label">デザインシステム</span><div class="bar-track"><div class="bar-fill" style="width:23%"></div></div><span class="bar-val">16</span></div>
-        <div class="bar-row"><span class="bar-label">API Gateway（Go）</span><div class="bar-track"><div class="bar-fill" style="width:16%"></div></div><span class="bar-val">11</span></div>
-        <div class="bar-row"><span class="bar-label">Proto</span><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div><span class="bar-val">7</span></div>
-        <div class="bar-row"><span class="bar-label">検索サービス（Go）</span><div class="bar-track"><div class="bar-fill" style="width:10%"></div></div><span class="bar-val">7</span></div>
-        <div class="bar-row"><span class="bar-label">実験的リポジトリ</span><div class="bar-track"><div class="bar-fill" style="width:9%"></div></div><span class="bar-val">6</span></div>
+        <div class="bar-row"><span class="bar-label">フロントエンド（Vue/Nuxt）</span><div class="bar-track"><div class="bar-fill" data-w="100%" style="width:0"></div></div><span class="bar-val">69</span></div>
+        <div class="bar-row"><span class="bar-label">BFF / 管理画面（TS）</span><div class="bar-track"><div class="bar-fill" data-w="68%" style="width:0"></div></div><span class="bar-val">47</span></div>
+        <div class="bar-row"><span class="bar-label">モノリス API（PHP）</span><div class="bar-track"><div class="bar-fill" data-w="67%" style="width:0"></div></div><span class="bar-val">46</span></div>
+        <div class="bar-row"><span class="bar-label">一覧ページ BE（Go）</span><div class="bar-track"><div class="bar-fill" data-w="32%" style="width:0"></div></div><span class="bar-val">22</span></div>
+        <div class="bar-row"><span class="bar-label">エッジ CDN IaC（Terraform）</span><div class="bar-track"><div class="bar-fill" data-w="23%" style="width:0"></div></div><span class="bar-val">16</span></div>
+        <div class="bar-row"><span class="bar-label">デザインシステム</span><div class="bar-track"><div class="bar-fill" data-w="23%" style="width:0"></div></div><span class="bar-val">16</span></div>
+        <div class="bar-row"><span class="bar-label">API Gateway（Go）</span><div class="bar-track"><div class="bar-fill" data-w="16%" style="width:0"></div></div><span class="bar-val">11</span></div>
+        <div class="bar-row"><span class="bar-label">Proto</span><div class="bar-track"><div class="bar-fill" data-w="10%" style="width:0"></div></div><span class="bar-val">7</span></div>
+        <div class="bar-row"><span class="bar-label">検索サービス（Go）</span><div class="bar-track"><div class="bar-fill" data-w="10%" style="width:0"></div></div><span class="bar-val">7</span></div>
+        <div class="bar-row"><span class="bar-label">実験的リポジトリ</span><div class="bar-track"><div class="bar-fill" data-w="9%" style="width:0"></div></div><span class="bar-val">6</span></div>
       </div>
     </div>
     <div class="card">
@@ -1028,16 +1027,13 @@ toC Web において、施策の意図・ドメインを理解したうえで、
   const barIo = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if(!e.isIntersecting) return;
-      e.target.querySelectorAll('.bar-fill').forEach(b => {
-        const w = b.getAttribute('data-w') || b.style.width || '0%';
-        if(!b.getAttribute('data-w')) b.setAttribute('data-w', w);
-        b.style.setProperty('--target-width', w);
-        b.style.width = '0';
-        setTimeout(() => b.classList.add('animated'), 60);
+      e.target.querySelectorAll('.bar-fill').forEach((b, i) => {
+        const w = b.getAttribute('data-w') || '0%';
+        setTimeout(() => { b.style.width = w; }, i * 60);
       });
       barIo.unobserve(e.target);
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.05 });
   document.querySelectorAll('.bar-chart').forEach(el => barIo.observe(el));
 
   /* ── Sticky nav active + current section label ── */
