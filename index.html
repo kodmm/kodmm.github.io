@@ -85,6 +85,14 @@
     .sw-list li { padding: 0.38rem 0 0.38rem 1.1rem; position: relative; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
     .sw-list li:last-child { border-bottom: none; }
     .sw-list li::before { content:'·'; position: absolute; left: 0; color: var(--accent); font-size: 1.1rem; line-height: 1; top: 0.42rem; }
+    .hobby-section { padding-top: 2.25rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+    .hobby-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 0.9rem; }
+    .hobby-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.1rem; text-align: center; transition: transform 0.15s; }
+    .hobby-card:hover { transform: translateY(-2px); }
+    .hobby-icon { font-size: 2rem; line-height: 1; margin-bottom: 0.45rem; }
+    .hobby-label { font-weight: 600; font-size: 0.88rem; margin-bottom: 0.2rem; }
+    .hobby-note { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+    .hobby-highlight { background: linear-gradient(135deg, var(--accent-bg) 0%, var(--success-bg) 100%); border-color: transparent; }
     .todo-board { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 0.85rem 1.1rem; margin-bottom: 1.25rem; border-left: 3px solid var(--warn); }
     .todo-board-title { font-size: 0.82rem; font-weight: 600; margin-bottom: 0.55rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
     .todo-list { list-style: none; padding: 0; margin: 0; }
@@ -103,7 +111,7 @@
     <h1 class="site-title">Kosei Tawara — キャリアプロフィール</h1>
     <p class="tagline">Web エンジニア · フロント／基盤移行／運用とチームの橋渡し <span style="color:var(--faint)">（社外公開版 · 2026-04）</span></p>
     <nav class="toc">
-      <a href="#career-vision">1. ビジョン</a><a href="#copy">2. 自己紹介</a><a href="#vision">3. 価値観</a><a href="#positioning">4. ポジショニング</a><a href="#strengths">5. 強み</a><a href="#stack">6. 技術スタック</a><a href="#projects">7. プロジェクト</a><a href="#keyprs">8. 代表PR</a><a href="#overview">9. 活動全体像</a><a href="#comparison">10. 定量指標</a><a href="#scrum">11. スクラム</a><a href="#oncall">12. OnCaller</a><a href="#review">13. レビュー姿勢</a><a href="#slack">14. コミュニケーション</a><a href="#feedback">15. 第三者評価</a><a href="#traffic">16. トラフィック</a><a href="#next">17. 次の経験</a><a href="#weaknesses">18. Q&amp;A</a>
+      <a href="#career-vision">1. ビジョン</a><a href="#copy">2. 自己紹介</a><a href="#vision">3. 価値観</a><a href="#positioning">4. ポジショニング</a><a href="#strengths">5. 強み</a><a href="#stack">6. 技術スタック</a><a href="#projects">7. プロジェクト</a><a href="#keyprs">8. 代表PR</a><a href="#overview">9. 活動全体像</a><a href="#comparison">10. 定量指標</a><a href="#scrum">11. スクラム</a><a href="#oncall">12. OnCaller</a><a href="#review">13. レビュー姿勢</a><a href="#slack">14. コミュニケーション</a><a href="#feedback">15. 第三者評価</a><a href="#traffic">16. トラフィック</a><a href="#next">17. 次の経験</a><a href="#weaknesses">18. Q&amp;A</a><a href="#hobbies">🌊 趣味</a>
     </nav>
   </div>
 </header>
@@ -623,6 +631,34 @@ toC Web において、施策の意図・ドメインを理解したうえで、
         <tr><td>全サービス合算</td><td>約 24.5 億 hits / 30 日（外部 API・BFF 等を含む）</td></tr>
       </tbody></table></div>
       <p class="note">数値は時期・環境で変動するため、オーダー感の参考として記載。スクリーンショットはマスク方針。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 0.5. プライベート -->
+<section id="hobbies" class="hobby-section">
+  <h2 class="sec-title">プライベートな一面</h2>
+  <p style="font-size:0.88rem;color:var(--muted);">仕事の外でも、大切な人を喜ばせたい・笑顔にしたいという気持ちが原動力になっています。</p>
+  <div class="hobby-grid">
+    <div class="hobby-card hobby-highlight">
+      <div class="hobby-icon">🌊</div>
+      <div class="hobby-label">サーフィン</div>
+      <div class="hobby-note">春〜秋にかけて海へ。自然の中で体を動かすのが好き</div>
+    </div>
+    <div class="hobby-card hobby-highlight">
+      <div class="hobby-icon">🏂</div>
+      <div class="hobby-label">スノーボード</div>
+      <div class="hobby-note">冬はゲレンデへ。季節によって遊びのフィールドが変わる</div>
+    </div>
+    <div class="hobby-card hobby-highlight">
+      <div class="hobby-icon">🎵</div>
+      <div class="hobby-label">ライブ / 音楽</div>
+      <div class="hobby-note">Mrs. Green Apple・Nissy のファンクラブ会員。生の熱量が好き</div>
+    </div>
+    <div class="hobby-card hobby-highlight">
+      <div class="hobby-icon">😊</div>
+      <div class="hobby-label">大切な人を笑顔に</div>
+      <div class="hobby-note">喜ばせる・笑顔にすることが一番の趣味。これがエンジニアとしての動機にも繋がっている</div>
     </div>
   </div>
 </section>
