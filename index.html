@@ -634,29 +634,34 @@ toC Web において、施策の意図・ドメインを理解したうえで、
   <h2 class="sec-title"><span class="sec-num">9</span><span class="sec-text">アクティビティの全体像</span></h2>
   <div class="grid grid-2">
     <div class="card">
-      <div class="card-title">主要リポジトリ別 PR 数（直近 350 件サンプル）</div>
+      <div class="card-title">リポジトリ別 merged PR 数（2024-04〜2026-04 · 全件）</div>
       <div class="bar-chart">
-        <div class="bar-row"><span class="bar-label">フロントエンド（Vue/Nuxt）</span><div class="bar-track"><div class="bar-fill" data-w="100%" style="width:0"></div></div><span class="bar-val">69</span></div>
-        <div class="bar-row"><span class="bar-label">BFF / 管理画面（TS）</span><div class="bar-track"><div class="bar-fill" data-w="68%" style="width:0"></div></div><span class="bar-val">47</span></div>
-        <div class="bar-row"><span class="bar-label">モノリス API（PHP）</span><div class="bar-track"><div class="bar-fill" data-w="67%" style="width:0"></div></div><span class="bar-val">46</span></div>
-        <div class="bar-row"><span class="bar-label">一覧ページ BE（Go）</span><div class="bar-track"><div class="bar-fill" data-w="32%" style="width:0"></div></div><span class="bar-val">22</span></div>
-        <div class="bar-row"><span class="bar-label">エッジ CDN IaC（Terraform）</span><div class="bar-track"><div class="bar-fill" data-w="23%" style="width:0"></div></div><span class="bar-val">16</span></div>
-        <div class="bar-row"><span class="bar-label">デザインシステム</span><div class="bar-track"><div class="bar-fill" data-w="23%" style="width:0"></div></div><span class="bar-val">16</span></div>
-        <div class="bar-row"><span class="bar-label">API Gateway（Go）</span><div class="bar-track"><div class="bar-fill" data-w="16%" style="width:0"></div></div><span class="bar-val">11</span></div>
-        <div class="bar-row"><span class="bar-label">Proto</span><div class="bar-track"><div class="bar-fill" data-w="10%" style="width:0"></div></div><span class="bar-val">7</span></div>
-        <div class="bar-row"><span class="bar-label">検索サービス（Go）</span><div class="bar-track"><div class="bar-fill" data-w="10%" style="width:0"></div></div><span class="bar-val">7</span></div>
-        <div class="bar-row"><span class="bar-label">実験的リポジトリ</span><div class="bar-track"><div class="bar-fill" data-w="9%" style="width:0"></div></div><span class="bar-val">6</span></div>
+        <div class="bar-row"><span class="bar-label">フロントエンド（Vue/Nuxt）</span><div class="bar-track"><div class="bar-fill" data-w="100%" style="width:0"></div></div><span class="bar-val">109</span></div>
+        <div class="bar-row"><span class="bar-label">BFF / 管理画面（TS）</span><div class="bar-track"><div class="bar-fill" data-w="86%" style="width:0"></div></div><span class="bar-val">94</span></div>
+        <div class="bar-row"><span class="bar-label">モノリス API（PHP）</span><div class="bar-track"><div class="bar-fill" data-w="52%" style="width:0"></div></div><span class="bar-val">57</span></div>
+        <div class="bar-row"><span class="bar-label">飲食店サービス BE（Go）</span><div class="bar-track"><div class="bar-fill" data-w="39%" style="width:0"></div></div><span class="bar-val">42</span></div>
+        <div class="bar-row"><span class="bar-label">ACP サービス（Go）</span><div class="bar-track"><div class="bar-fill" data-w="38%" style="width:0"></div></div><span class="bar-val">41</span></div>
+        <div class="bar-row"><span class="bar-label">API Gateway（Go）</span><div class="bar-track"><div class="bar-fill" data-w="27%" style="width:0"></div></div><span class="bar-val">29</span></div>
+        <div class="bar-row"><span class="bar-label">デザインシステム</span><div class="bar-track"><div class="bar-fill" data-w="21%" style="width:0"></div></div><span class="bar-val">23</span></div>
+        <div class="bar-row"><span class="bar-label">レガシーリプレイス（PHP）</span><div class="bar-track"><div class="bar-fill" data-w="20%" style="width:0"></div></div><span class="bar-val">22</span></div>
+        <div class="bar-row"><span class="bar-label">エッジ CDN IaC（Terraform）</span><div class="bar-track"><div class="bar-fill" data-w="20%" style="width:0"></div></div><span class="bar-val">22</span></div>
+        <div class="bar-row"><span class="bar-label">Proto</span><div class="bar-track"><div class="bar-fill" data-w="11%" style="width:0"></div></div><span class="bar-val">12</span></div>
+        <div class="bar-row"><span class="bar-label">インフラ</span><div class="bar-track"><div class="bar-fill" data-w="6%" style="width:0"></div></div><span class="bar-val">7</span></div>
+        <div class="bar-row"><span class="bar-label">検索サービス（Go）</span><div class="bar-track"><div class="bar-fill" data-w="5%" style="width:0"></div></div><span class="bar-val">5</span></div>
+        <div class="bar-row"><span class="bar-label">実験的リポジトリ</span><div class="bar-track"><div class="bar-fill" data-w="5%" style="width:0"></div></div><span class="bar-val">5</span></div>
       </div>
+      <p class="note">GitHub Search API で author:kodmm の全 merged PR を集計。合計 <strong>535 件</strong>（2024-04〜2026-04）。</p>
     </div>
     <div class="card">
-      <div class="card-title">月別 PR 数 — 主要スパイク解説</div>
+      <div class="card-title">月別 PR 数 — 傾向と主要スパイク</div>
       <ul>
-        <li><strong>2024-12（54 PR）</strong>: 一覧ページ Go 化の大型施策集中投入期。フロント/バック/Infra を横断して 1 ヶ月にスパイク。</li>
-        <li><strong>2026-04（50 PR）</strong>: エリア・ジャンル別一覧の retty3 振り分け施策。3 リポジトリを横断した安全リリース分割。</li>
-        <li><strong>2025-01〜02（22・13 PR）</strong>: スクラム運営と施策推進が安定的に重なった時期。</li>
-        <li><strong>2022-04〜2023-03（内定者インターン）</strong>: 入社前インターンとして参加。正社員換算の比較対象外。</li>
+        <li><strong>2024-11〜12（34・37 PR）</strong>: 一覧ページ Go 化の大型施策集中投入期。フロント / バック / Infra を横断して連続スパイク。</li>
+        <li><strong>2025-10（33 PR）</strong>: 外部決済キャンペーン施策とパフォーマンス改善が重なり高出力。</li>
+        <li><strong>2026-03（31 PR）</strong>: エリア・ジャンル別一覧の retty3 振り分け施策。3 リポジトリを横断した安全リリース分割。</li>
+        <li><strong>2025-06 / 2025-12（0 PR）</strong>: 休暇月。稼働月の月平均は約 25 PR。</li>
+        <li><strong>2025-02（14 PR）</strong>: チーム移行期にあたり一時低下。</li>
       </ul>
-      <p class="note">Frontend / Backend / Infra / IaC / Design リポジトリを跨いで毎月コミットする「全レイヤー対応」プロファイル。AI ツール（Cursor / Devin）活用後も自己検証は欠かさない。</p>
+      <p class="note">Frontend / Backend / Infra / IaC / Design リポジトリを毎月横断する「全レイヤー対応」プロファイル。AI ツール（Cursor / Devin）活用後も自己検証は欠かさない。</p>
     </div>
   </div>
 </section>
