@@ -615,6 +615,46 @@ toC Web において、施策の意図・ドメインを理解したうえで、
         <li>発見・提案・実装・リリースを 1 人で回す「フルサイクル自走」型</li>
       </ul>
     </div>
+    <div class="card">
+      <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:0.45rem;"><div style="font-weight:600">軸別キュレーション一覧の立ち上げ・拡大運用</div><span class="pill accent" style="white-space:nowrap;margin-left:0.4rem">2023-08〜継続</span></div>
+      <span class="pill warn">フルスタック / 立ち上げ〜継続改善</span>
+      <p style="margin-top:0.55rem;">「個室で 2 名・夜・予約のしやすさ」「ポイントが貯まる」「カウンター席」など、ユーザーの嗜好や行動軸でキュレーションして見せる新しい一覧ページ群を、立ち上げから 2 年強の拡大運用までフルスタックで担当。フロント（Nuxt 3）・BFF（GraphQL）・バックエンド（Go マイクロサービス）・データ仕込み（GAS）・UX 計測（mouseflow 導入）まで、施策に必要な全レイヤーを 1 人で組みに行った。</p>
+      <ul style="font-size:0.83rem;color:var(--muted);">
+        <li>店舗データ供給 Go マイクロサービス 30+ PR / フロント 5 PR / BFF 3 PR</li>
+        <li>GAS によるデータ準備パイプライン構築 + mouseflow 導入で UX を実測</li>
+        <li>立ち上げ → 本格展開 → UX / アーキテクチャ磨き込みを連続的に駆動</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:0.45rem;"><div style="font-weight:600">Nuxt 3 SSR への移行 + Core Web Vitals 改善</div><span class="pill accent" style="white-space:nowrap;margin-left:0.4rem">2024-06〜継続</span></div>
+      <span class="pill warn">フロント基盤刷新 / 性能改善リード</span>
+      <p style="margin-top:0.55rem;">Vue 2 / 旧 Nuxt 由来の Web フロント本体を Nuxt 3 SSR へ移行し、LCP・FCP・INP 改善と SPA 遷移化で Core Web Vitals を底上げ。SSR 特有のバグ（<code>runWithContext</code> が Promise をスローするケース等）も Nuxt 3 内部実装まで読み込み、1 PR で 24 ファイル 76 箇所を根本対応するなど「ハマりどころ解消」と「基盤刷新」を両立。</p>
+      <ul style="font-size:0.83rem;color:var(--muted);">
+        <li>フロント本体の Nuxt 3 / Vue 3 / TS 追随 PR 162+ 件</li>
+        <li>SPA タブ遷移化・OpenAPI クライアント TS 化など 10 超のサブプロジェクト</li>
+        <li>SSR 起因の連鎖バグを Nuxt 3 内部の <code>runWithContext</code> まで遡って修正</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:0.45rem;"><div style="font-weight:600">CD フロー刷新 — タグ打ちリリースへの一本化</div><span class="pill accent" style="white-space:nowrap;margin-left:0.4rem">2026-04（約 1 週間）</span></div>
+      <span class="pill warn">DevOps 設計 / 全社展開リード</span>
+      <p style="margin-top:0.55rem;">レガシー API 側の「branch hook による 1 日 1 回の定時リリース」を「タグを打てばいつでもリリースできる仕組み」に刷新。設計 → ステージング検証 → 本番タグ打ち初リリース → 全社告知 → 旧フロー廃止までを約 1 週間で駆け抜け、社内のリリースフローを統一。</p>
+      <ul style="font-size:0.83rem;color:var(--muted);">
+        <li>リリース担当チームを廃止し、PR マージ者が直接リリースできる構造に</li>
+        <li>README / git コマンド配布で摩擦最小化、人的リリース漏れをゼロ化</li>
+        <li>後続メンバーの認知負荷を下げる CD 統一化で DORA 指標の前提を整備</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:0.45rem;"><div style="font-weight:600">Fastly VCL によるエッジ振り分け / CDN 刷新</div><span class="pill accent" style="white-space:nowrap;margin-left:0.4rem">2023-10〜2024-11</span></div>
+      <span class="pill warn">エッジ層設計 / 段階移行リード</span>
+      <p style="margin-top:0.55rem;">大規模モノリス PHP → Go マイクロサービス移行を支えるエッジルーティングを Fastly VCL + Terraform で IaC 化。会員/非会員別・店舗 ID 範囲別・テーマ別など複数軸での ratio-based 切替・即時ロールバック / ロールフォワードを設計し、段階移行のリーダーシップを担った。</p>
+      <ul style="font-size:0.83rem;color:var(--muted);">
+        <li>Fastly Terraform で 25% / 50% / 75% / 100% 段階移行を反復・本番適用</li>
+        <li>非会員 100% 切替直後に表面化した不整合を即時検知 → 切戻しで被害最小化</li>
+        <li>振り分け条件（エリア・ジャンル・予約系）と Frontend ルーティングの整合性管理</li>
+      </ul>
+    </div>
   </div>
 </section>
 
